@@ -1,0 +1,12 @@
+{
+  "name": "sic-semi3-3-quiz",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Kiểm tra 10 bài Công nghệ bán dẫn SIC Semi3-3",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}
