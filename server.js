@@ -12,7 +12,7 @@ const DATABASE_URL=process.env.DATABASE_URL||'';
 const QUESTIONS=JSON.parse(fs.readFileSync(path.join(ROOT,'questions.json'),'utf8'));
 const RESULTS_FILE=process.env.RESULTS_FILE||path.join(ROOT,'results.json');
 const EXCEL_FILE=process.env.EXCEL_FILE||path.join(path.dirname(RESULTS_FILE),'bang-diem-SIC-Semi3-3.xlsx');
-const LIMIT=32768, DURATION_MS=60000;
+const LIMIT=32768, DURATION_MS=45000;
 const pool=DATABASE_URL?new Pool({connectionString:DATABASE_URL,ssl:DATABASE_URL.includes('localhost')?false:{rejectUnauthorized:false},max:5}):null;
 const mem=new Map();
 const now=()=>Date.now();
@@ -25,7 +25,7 @@ function body(req){return new Promise((resolve,reject)=>{let str='',size=0;req.o
 function safeEq(a,b){const x=Buffer.from(String(a||'')),y=Buffer.from(String(b||''));return x.length===y.length&&crypto.timingSafeEqual(x,y)}
 function isAdmin(req){return ADMIN_KEY.length>=12&&safeEq(req.headers['x-admin-key'],ADMIN_KEY)}
 function plan(lesson){const ids=shuffle(QUESTIONS[lesson].questions.map(q=>q.id));const perms=Object.fromEntries(ids.map(id=>[id,shuffle([0,1,2,3])]));return {ids,perms};}
-function getQuestion(s){const id=s.plan.ids[s.index],q=QUESTIONS[s.lesson].questions.find(q=>q.id===id);if(!q)return null;return {id:q.id,text:q.text,options:s.plan.perms[q.id].map(i=>q.options[i]),number:s.index+1,total:s.plan.ids.length,seconds:60,deadline:s.deadline};}
+function getQuestion(s){const id=s.plan.ids[s.index],q=QUESTIONS[s.lesson].questions.find(q=>q.id===id);if(!q)return null;return {id:q.id,text:q.text,options:s.plan.perms[q.id].map(i=>q.options[i]),number:s.index+1,total:s.plan.ids.length,seconds:DURATION_MS/1000,deadline:s.deadline};}
 function resultRecord(s){const total=s.plan.ids.length;return {id:s.id,name:s.name,className:'Semi3-3',course:'Công nghệ bán dẫn tại SIC',lesson:s.lesson,lessonTitle:QUESTIONS[s.lesson].title,correct:s.correct,total,score10:Math.round(s.correct/total*100)/10,startedAt:new Date(s.created).toISOString(),finishedAt:new Date().toISOString()};}
 function scoreResponse(r){return {finished:true,score:r.score10,lessonTitle:r.lessonTitle};}
 async function listResults(){if(pool){const r=await pool.query('SELECT payload FROM quiz_results ORDER BY finished_at DESC');return r.rows.map(x=>x.payload)}return JSON.parse(fs.readFileSync(RESULTS_FILE,'utf8')).sort((a,b)=>b.finishedAt.localeCompare(a.finishedAt));}

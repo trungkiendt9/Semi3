@@ -3,7 +3,7 @@
 **Không có thư mục con**: upload tất cả file (`server.js`, `app.js`, `index.html`, `style.css`, `questions.json`, `package.json`, `render.yaml`, `.gitignore`, `README.md`) vào thư mục gốc repository GitHub (Private).
 
 ## Chức năng
-- 10 bài, 100 câu; **60 giây cho từng câu**; hết giờ tự chuyển khi trang đang mở.
+- 10 bài, 100 câu; **45 giây cho từng câu**; hết giờ tự chuyển khi trang đang mở.
 - Mỗi phiên thi trộn ngẫu nhiên **thứ tự 10 câu** và **thứ tự 4 phương án trong từng câu** bằng bộ sinh ngẫu nhiên an toàn trên máy chủ.
 - Đáp án chỉ ở máy chủ; sinh viên **chỉ thấy điểm số**, không thấy đáp án.
 - Tự động lưu mỗi lượt hoàn thành. Giảng viên xem danh sách, tải **Excel (.xlsx)** hoặc CSV.
@@ -24,5 +24,5 @@
 - Nếu **không cấu hình `DATABASE_URL`**, ứng dụng vẫn chạy ở chế độ thử nghiệm: kết quả JSON + Excel nằm trên ổ đĩa container tạm thời và phiên thi ở RAM; **có thể mất toàn bộ khi Render restart/redeploy**. Không dùng chế độ này cho thi chính thức.
 - `EXCEL_FILE` có thể đặt thành `/var/data/bang-diem-SIC-Semi3-3.xlsx` **chỉ nếu Render service có Persistent Disk gắn tại `/var/data`**. Nếu không, file Excel được tạo tự động nhưng là bản tạm; bản ghi tin cậy nằm trong PostgreSQL.
 - Hệ thống hiện xác định sinh viên bằng **họ tên do người làm nhập**; chưa xác thực danh tính, chưa giới hạn số lần thi theo người và chưa chống gian lận bằng xác thực. Nên bổ sung mã sinh viên / xác thực trước kỳ thi chính thức.
-- Bộ nhớ máy chủ tự lưu mỗi câu đã trả lời; sau 60 giây, trình duyệt chủ động nộp câu. Nếu sinh viên đóng trình duyệt, phiên có thể bị treo đến khi tiếp tục; bài chưa nộp hết chưa có kết quả trong Excel.
+- Bộ nhớ máy chủ tự lưu mỗi câu đã trả lời; sau 45 giây, trình duyệt chủ động nộp câu. Nếu sinh viên đóng trình duyệt, phiên có thể bị treo đến khi tiếp tục; bài chưa nộp hết chưa có kết quả trong Excel.
 - `ADMIN_KEY` bắt buộc dài ít nhất 12 ký tự, không dùng lại mật khẩu cá nhân.
