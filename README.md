@@ -16,8 +16,14 @@ Toàn bộ tệp trong ZIP nằm ở cấp ngoài cùng, không có thư mục c
 5. Deploy. Mở link HTTPS do Render cung cấp.
 
 ## Những lưu ý bắt buộc
-- Website chứa **10 bài, 100 câu**, mỗi câu 30 giây, chỉ hiện điểm.
+- Website chứa **10 bài, 100 câu**, mỗi câu 60 giây, chỉ hiện điểm.
 - `questions.json` chứa đáp án. Dùng GitHub **Private**, không chuyển repository sang Public. Server chỉ cho phép tải index.html, style.css và app.js; không xuất câu trả lời qua API.
 - Mặc định bảng điểm nằm ở `results.json` trên ổ đĩa ứng dụng. **Render có thể xóa dữ liệu này khi deploy hoặc restart**. Để lưu bền vững, cần database hoặc persistent disk. Có thể dùng env `RESULTS_FILE=/var/data/results.json` nếu đã gắn Persistent Disk ở `/var/data`.
 - Phiên làm bài nằm trong RAM, sẽ mất khi server khởi động lại. **Chưa phù hợp cho thi chính thức đông người nếu chưa bổ sung lưu phiên thi bền vững, xác thực và hạn chế lượt thi.**
 - Nên thử với vài sinh viên trước khi dùng cho cả lớp.
+
+## Biên tập đề kiểm tra (bản cập nhật)
+- 100/100 câu đã được biên tập lại: câu hỏi có ngữ cảnh, chú giải thuật ngữ trong câu và lựa chọn khi cần.
+- Mỗi câu gồm 4 lựa chọn cùng chủ đề, có phương án gây nhiễu hợp lý và cân bằng độ dài tương đối.
+- Không đưa file `questions.json` lên kho mã nguồn Public vì tệp có trường `answer`.
+- Nội dung câu hỏi dùng cho giảng dạy, nên được giảng viên rà soát lần cuối trước khi thi chính thức.
