@@ -19,10 +19,10 @@
       "lesson": 1,
       "text": "OSAT (đơn vị lắp ráp và kiểm thử thuê) làm việc nào trong chuỗi bán dẫn?",
       "options": [
-        "Đóng gói, lắp ráp và kiểm thử chip",
-        "Thiết kế bố trí transistor cho wafer",
-        "Chế tạo wafer theo sơ đồ của khách hàng",
-        "Phát triển phần mềm cho máy chủ"
+        "Đóng gói và kiểm thử chip theo hợp đồng",
+        "Thiết kế sơ đồ logic chip theo hợp đồng",
+        "Chế tạo các wafer silicon theo hợp đồng",
+        "Cung ứng tấm nền silicon theo hợp đồng"
       ],
       "answer": 0
     },
@@ -31,10 +31,10 @@
       "lesson": 1,
       "text": "Foundry (xưởng chế tạo wafer theo đặt hàng) thường cung cấp dịch vụ nào?",
       "options": [
-        "Chế tạo wafer theo thiết kế của khách hàng",
-        "Chỉ kiểm tra độ bền sau đóng gói",
-        "Chỉ vận chuyển chip thành phẩm",
-        "Chỉ chế tạo đế hữu cơ cho package"
+        "Gia công wafer theo thiết kế khách hàng",
+        "Lắp ráp package theo thiết kế khách hàng",
+        "Kiểm tra độ bền theo yêu cầu khách hàng",
+        "Chế tạo substrate theo yêu cầu khách hàng"
       ],
       "answer": 0
     },
@@ -43,10 +43,10 @@
       "lesson": 1,
       "text": "IDM (nhà sản xuất linh kiện tích hợp) khác OSAT truyền thống ở điểm nào?",
       "options": [
-        "IDM tích hợp thiết kế và chế tạo chip",
-        "IDM chỉ nhận lắp ráp theo hợp đồng",
-        "IDM chỉ cung cấp phần mềm EDA",
-        "IDM chỉ cung cấp vật liệu underfill"
+        "IDM tự thiết kế và chế tạo chip bán dẫn",
+        "IDM chỉ nhận lắp ráp và kiểm thử thuê",
+        "IDM chỉ thiết kế IP và cấp phép cho chip",
+        "IDM chỉ cung cấp đế và các vật liệu phụ"
       ],
       "answer": 0
     },
@@ -55,10 +55,10 @@
       "lesson": 1,
       "text": "Advanced Packaging (đóng gói tiên tiến) yêu cầu phối hợp sớm vì điều gì?",
       "options": [
-        "Thiết kế die, package và hệ thống cùng ảnh hưởng hiệu năng",
-        "Mọi vấn đề điện được giải quyết sau đóng gói",
-        "Đóng gói không cần xét đặc tính vật liệu",
-        "Việc thử nghiệm không còn cần thiết"
+        "Cùng thiết kế die, package và hệ thống",
+        "Chỉ tối ưu vật liệu bọc ngoài của package",
+        "Bỏ qua các thử nghiệm độ tin cậy về sau",
+        "Chỉ thu nhỏ transistor, bỏ qua kết nối"
       ],
       "answer": 0
     },
@@ -67,10 +67,10 @@
       "lesson": 1,
       "text": "AI/HPC (trí tuệ nhân tạo/tính toán hiệu năng cao) thúc đẩy công nghệ đóng gói chủ yếu bởi nhu cầu nào?",
       "options": [
-        "Băng thông bộ nhớ và mật độ tính toán lớn",
-        "Giảm mọi kết nối tới bộ nhớ ngoài",
-        "Loại bỏ đường truyền tín hiệu tốc độ cao",
-        "Tăng khoảng cách vật lý giữa các die"
+        "Tăng băng thông và mật độ tính toán",
+        "Giảm băng thông trao đổi với bộ nhớ",
+        "Giảm số kết nối dữ liệu tốc độ cao",
+        "Tăng khoảng cách giữa die và bộ nhớ"
       ],
       "answer": 0
     },
@@ -79,10 +79,10 @@
       "lesson": 1,
       "text": "Trong kiến trúc 2.5D, nhiều die thường được bố trí như thế nào?",
       "options": [
-        "Đặt cạnh nhau trên lớp trung gian định tuyến",
-        "Chỉ xếp thẳng đứng trong một cột",
-        "Đặt tách biệt trên các bo mạch độc lập",
-        "Không cần liên kết giữa các die"
+        "Die đặt cạnh nhau trên lớp trung gian",
+        "Die xếp chồng dọc trên lớp trung gian",
+        "Die gắn riêng lên các bo mạch độc lập",
+        "Die đặt cạnh nhau nhưng không kết nối"
       ],
       "answer": 0
     },
@@ -91,10 +91,10 @@
       "lesson": 1,
       "text": "Trong cấu trúc đóng gói 3D, dấu hiệu đặc trưng nào thường gặp?",
       "options": [
-        "Các die được xếp chồng theo chiều đứng",
-        "Các die chỉ đặt song song trên một mặt phẳng",
-        "Die duy nhất được bảo vệ bằng vỏ nhựa",
-        "Chỉ sử dụng chân BGA bên ngoài package"
+        "Nhiều die xếp chồng theo phương đứng",
+        "Nhiều die đặt cạnh nhau trên một lớp",
+        "Một die đơn đặt trong vỏ nhiều lớp",
+        "Nhiều die đặt rời trên các bảng mạch"
       ],
       "answer": 0
     },
@@ -103,10 +103,10 @@
       "lesson": 1,
       "text": "Substrate (đế đóng gói) đảm nhiệm chức năng nào trong package?",
       "options": [
-        "Nâng đỡ die và phân phối tín hiệu, nguồn",
-        "Tạo transistor trực tiếp trong lõi silicon",
-        "Chạy chương trình điều khiển của bộ nhớ",
-        "Thay thế mọi kiểm tra chất lượng wafer"
+        "Đỡ die, dẫn tín hiệu và phân phối nguồn",
+        "Chứa transistor xử lý trong lõi vật liệu",
+        "Lưu dữ liệu chạy ứng dụng trên bộ nhớ",
+        "Thay việc kiểm tra chất lượng wafer đầu"
       ],
       "answer": 0
     },
@@ -115,10 +115,10 @@
       "lesson": 1,
       "text": "Bump pitch (bước mối nối) trong kết nối die–substrate biểu thị gì?",
       "options": [
-        "Khoảng cách tâm đến tâm giữa các bump",
-        "Khoảng cách từ die tới mép substrate",
-        "Độ cao của một bump tính từ mặt pad",
-        "Độ dày tổng các lớp UBM trên die"
+        "Khoảng cách tâm giữa các bump liền kề",
+        "Khoảng cách từ die đến mép substrate",
+        "Chiều cao từ pad đến đỉnh một bump",
+        "Chiều dày của lớp kim loại dưới bump"
       ],
       "answer": 0
     },
@@ -127,10 +127,10 @@
       "lesson": 1,
       "text": "Khi đánh giá một công nghệ mới, cần phân biệt những mức độ triển khai nào?",
       "options": [
-        "R&D, chạy thử và sản xuất hàng loạt",
-        "Thiết kế giao diện, đóng hộp và vận chuyển",
-        "Tuyển dụng, bảo trì và phát triển thị trường",
-        "Thử chức năng, in nhãn và lưu kho"
+        "Nghiên cứu, chạy thử và sản xuất lớn",
+        "Thiết kế, tiếp thị và vận chuyển hàng",
+        "Kiểm tra, lưu kho và bàn giao thiết bị",
+        "Mua vật liệu, gia công và đóng thùng"
       ],
       "answer": 0
     },
@@ -139,10 +139,10 @@
       "lesson": 2,
       "text": "UBM (hệ kim loại dưới bump) nối giữa những thành phần nào trong flip-chip?",
       "options": [
-        "Pad trên die và mối nối bump",
-        "Lõi silicon và nắp tản nhiệt",
-        "Lớp vỏ nhựa và bo mạch chủ",
-        "Cánh tản nhiệt và không khí"
+        "Từ pad trên die tới mối nối bump hàn",
+        "Từ lõi silicon tới nắp che tản nhiệt",
+        "Từ nhựa bao bọc tới mặt bo mạch chủ",
+        "Từ đế substrate tới bộ tản nhiệt ngoài"
       ],
       "answer": 0
     },
@@ -151,10 +151,10 @@
       "lesson": 2,
       "text": "Current crowding (tập trung mật độ dòng) thường xảy ra ở đâu?",
       "options": [
-        "Vùng chuyển tiếp hình học như pad hoặc via",
-        "Trên mọi tiết diện với mật độ bằng nhau",
-        "Trong lớp điện môi không dẫn điện",
-        "Chỉ ở mặt ngoài của vỏ package"
+        "Ở vùng đổi tiết diện như pad và via",
+        "Ở mọi nơi với mật độ dòng bằng nhau",
+        "Ở lớp điện môi vốn không dẫn điện",
+        "Ở lớp vỏ ngoài của package bán dẫn"
       ],
       "answer": 0
     },
@@ -163,10 +163,10 @@
       "lesson": 2,
       "text": "Lớp barrier (chắn khuếch tán) của UBM dùng để làm gì?",
       "options": [
-        "Hạn chế sự khuếch tán nguyên tử qua giao diện",
-        "Tăng chiều cao bump bằng giãn nở nhiệt",
-        "Thay thế các lớp kim loại dẫn điện khác",
-        "Tạo đường thoát nhiệt trực tiếp ra không khí"
+        "Ngăn khuếch tán nguyên tử qua giao diện",
+        "Tăng chiều cao bump khi được gia nhiệt",
+        "Thay toàn bộ lớp kim loại dẫn điện khác",
+        "Dẫn nhiệt trực tiếp ra môi trường ngoài"
       ],
       "answer": 0
     },
@@ -175,10 +175,10 @@
       "lesson": 2,
       "text": "Solder bridging (cầu hàn) là lỗi liên kết nào?",
       "options": [
-        "Vật liệu hàn nối nhầm hai pad cần cách điện",
-        "Lớp solder không thấm ướt một pad",
-        "Vết nứt lan trong solder sau thử nhiệt",
-        "Lỗ khí xuất hiện trong lớp underfill"
+        "Vật liệu hàn nối nhầm hai pad cạnh nhau",
+        "Vật liệu hàn không bám ướt pad tiếp xúc",
+        "Mối hàn xuất hiện nứt dưới chu kỳ nhiệt",
+        "Lớp underfill có lỗ khí dưới vùng die"
       ],
       "answer": 0
     },
@@ -188,9 +188,9 @@
       "text": "Khi reflow (nung chảy vật liệu hàn), self-alignment (tự căn chỉnh) chủ yếu nhờ gì?",
       "options": [
         "Sức căng bề mặt của solder nóng chảy",
-        "Lực từ trường giữa hai lớp substrate",
-        "Lực hút tĩnh điện từ vỏ nhựa",
-        "Áp suất từ không khí môi trường"
+        "Từ trường giữa các lớp của substrate",
+        "Lực hút tĩnh điện giữa die và vỏ nhựa",
+        "Áp suất khí nén ép bump về vị trí cũ"
       ],
       "answer": 0
     },
@@ -199,10 +199,10 @@
       "lesson": 2,
       "text": "Vì sao bump đạt thử điện lúc đầu vẫn có nguy cơ lỗi về sau?",
       "options": [
-        "Hư hỏng tiềm ẩn có thể tăng sau tải nhiệt–cơ",
-        "Mọi mối nối đạt điện đều bền vô hạn",
-        "Kiểm tra điện đã sửa mọi khuyết tật vật lý",
-        "Không còn cần thử độ tin cậy của mối nối"
+        "Lỗi tiềm ẩn phát triển khi tải nhiệt–cơ",
+        "Đạt thử điện nghĩa là không thể bị hỏng",
+        "Thử điện ban đầu sửa được khuyết tật",
+        "Đạt điện đồng nghĩa không cần thử mỏi"
       ],
       "answer": 0
     },
@@ -211,10 +211,10 @@
       "lesson": 2,
       "text": "IMC (hợp chất liên kim) trong mối hàn cần được kiểm soát vì sao?",
       "options": [
-        "Tăng trưởng quá mức có thể gây giao diện giòn",
-        "IMC luôn là lớp hoàn toàn không dẫn điện",
-        "IMC chỉ có mặt trong lớp underfill",
-        "IMC không bị ảnh hưởng bởi lịch sử nhiệt"
+        "Lớp IMC dày quá có thể làm giòn giao diện",
+        "Lớp IMC luôn cách điện giữa hai pad nối",
+        "Lớp IMC chỉ có mặt trong keo underfill",
+        "Lớp IMC không đổi sau các chu kỳ nhiệt"
       ],
       "answer": 0
     },
@@ -223,10 +223,10 @@
       "lesson": 2,
       "text": "Trong UBM, seed layer (lớp mồi dẫn điện) phục vụ công đoạn nào?",
       "options": [
-        "Tạo đường dẫn ban đầu cho quá trình mạ điện",
-        "Định hình vỏ nhựa ở phía ngoài die",
-        "Giảm độ cong của toàn bộ substrate",
-        "Tạo khe giữa die và nắp làm mát"
+        "Tạo lớp dẫn ban đầu để mạ điện kim loại",
+        "Tạo bề mặt khuôn ép nhựa bọc ngoài die",
+        "Giảm cong vênh cơ học trên toàn substrate",
+        "Tạo vùng cách nhiệt giữa die và nắp đậy"
       ],
       "answer": 0
     },
@@ -235,10 +235,10 @@
       "lesson": 2,
       "text": "Skin effect (hiệu ứng bề mặt) ở tần số cao làm dòng điện thay đổi như thế nào?",
       "options": [
-        "Có xu hướng tập trung gần bề mặt vật dẫn",
-        "Phân bố đều tại mọi tần số hoạt động",
-        "Chỉ chảy trong lớp cách điện của bump",
-        "Biến mất ở mọi đoạn dẫn bằng đồng"
+        "Dòng điện tập trung ở gần bề mặt vật dẫn",
+        "Dòng điện phân bố đều ở mọi tần số cao",
+        "Dòng điện chuyển sang lớp cách điện ngoài",
+        "Dòng điện biến mất trong mọi đường đồng"
       ],
       "answer": 0
     },
@@ -247,10 +247,10 @@
       "lesson": 2,
       "text": "Khi so sánh wire bond và flip-chip về nhiễu chuyển mạch, cần xem yếu tố nào?",
       "options": [
-        "Điện cảm của toàn bộ vòng dòng kể cả đường hồi",
-        "Chỉ màu của dây dẫn và lớp solder",
-        "Chỉ tên công nghệ mà không xét hình học",
-        "Chỉ khối lượng vật liệu phủ ngoài die"
+        "Điện cảm của vòng dòng gồm cả đường hồi",
+        "Điện trở của đoạn dây mà bỏ đường hồi",
+        "Khối lượng vỏ ngoài mà bỏ đường dòng",
+        "Tên công nghệ mà bỏ qua hình học mạch"
       ],
       "answer": 0
     },
@@ -259,10 +259,10 @@
       "lesson": 3,
       "text": "Trong substrate hữu cơ, core (lõi gia cường) giữ vai trò chính nào?",
       "options": [
-        "Tạo độ cứng và hỗ trợ chịu tải uốn của đế",
-        "Tạo toàn bộ transistor bên trong chip",
-        "Cung cấp điện năng như một pin hóa học",
-        "Thay thế các mặt phẳng tham chiếu tín hiệu"
+        "Tăng độ cứng và chịu tải uốn của đế",
+        "Chế tạo toàn bộ transistor trong die",
+        "Cấp điện như một pin hóa học tích hợp",
+        "Thay mọi mặt phẳng tín hiệu của đế"
       ],
       "answer": 0
     },
@@ -271,10 +271,10 @@
       "lesson": 3,
       "text": "ABF (màng điện môi build-up) hỗ trợ đặc điểm nào của substrate?",
       "options": [
-        "Tạo các lớp cách điện mỏng cho định tuyến mật độ cao",
-        "Thực hiện tính toán logic trong die",
-        "Thay thế hoàn toàn lớp lõi gia cường",
-        "Tạo mối hàn nóng chảy ngay trên pad"
+        "Cung cấp lớp điện môi cho routing mịn",
+        "Chứa các transistor xử lý logic của die",
+        "Thay hoàn toàn lõi cơ học của substrate",
+        "Tạo mối hàn nóng chảy trên bề mặt pad"
       ],
       "answer": 0
     },
@@ -283,10 +283,10 @@
       "lesson": 3,
       "text": "Với microvia (lỗ nối nhỏ giữa các lớp), trình tự nào phù hợp?",
       "options": [
-        "Khoan laser, desmear làm sạch, rồi mạ đồng",
-        "Mạ đồng, đóng vỏ, rồi mới khoan laser",
-        "Gắn chip, cắt wafer, rồi phủ underfill",
-        "Thử độ bền, in nhãn, rồi khoan laser"
+        "Khoan laser, làm sạch cặn, mạ đồng",
+        "Mạ đồng, đúc vỏ nhựa, khoan laser",
+        "Gắn die, cắt wafer, phủ underfill",
+        "Thử điện, in nhãn rồi khoan laser"
       ],
       "answer": 0
     },
@@ -295,10 +295,10 @@
       "lesson": 3,
       "text": "Vì sao đường kính miệng microvia đúng chưa bảo đảm tiếp xúc tốt?",
       "options": [
-        "Đáy lỗ có thể còn cặn hoặc lớp mạ không liên tục",
-        "Đường kính miệng luôn quyết định mọi tính chất",
-        "Chất lượng mạ không ảnh hưởng điện trở nối",
-        "Landing pad không tham gia kết nối giữa lớp"
+        "Đáy còn cặn hoặc mạ đồng thiếu liên tục",
+        "Miệng đủ cỡ thì đáy luôn đạt chất lượng",
+        "Lớp mạ không tác động đến điện trở nối",
+        "Pad ở lớp dưới không tham gia kết nối"
       ],
       "answer": 0
     },
@@ -307,10 +307,10 @@
       "lesson": 3,
       "text": "Via pitch trong substrate là khoảng cách giữa các đối tượng nào?",
       "options": [
-        "Tâm các lỗ via lân cận",
-        "Tâm các transistor trên die",
-        "Hai mặt ngoài của substrate",
-        "Hai góc đối diện của package"
+        "Khoảng cách tâm của hai lỗ via kề nhau",
+        "Tâm đến tâm của hai transistor kề nhau",
+        "Khoảng cách giữa hai mặt của substrate",
+        "Khoảng cách giữa hai góc của package"
       ],
       "answer": 0
     },
@@ -319,10 +319,10 @@
       "lesson": 3,
       "text": "Stacked via (via xếp chồng) có đánh đổi thường gặp nào?",
       "options": [
-        "Tiết kiệm diện tích nhưng yêu cầu giao diện mạ tốt",
-        "Tốn diện tích nhưng không cần căn chỉnh lớp",
-        "Luôn có độ tin cậy cao hơn mọi via so le",
-        "Không cần kiểm tra độ phẳng sau mạ"
+        "Tiết kiệm diện tích, đòi mạ giao diện tốt",
+        "Tốn diện tích, bỏ qua căn chỉnh các lớp",
+        "Luôn bền nhiệt hơn so với mọi via so le",
+        "Không cần làm phẳng sau khi đã mạ đồng"
       ],
       "answer": 0
     },
@@ -331,10 +331,10 @@
       "lesson": 3,
       "text": "Staggered via (via so le) có đặc điểm nào so với via xếp chồng?",
       "options": [
-        "Vị trí nối liên lớp dịch ngang giữa các tầng",
-        "Các lỗ hoàn toàn trùng trục qua mọi tầng",
-        "Không cần đường dẫn đồng giữa các lớp",
-        "Mọi via luôn nằm ngoài vùng substrate"
+        "Các via giữa hai lớp bố trí lệch ngang",
+        "Các via giữa hai lớp luôn trùng trục",
+        "Các lớp không có đường đồng nối nhau",
+        "Các via đều nằm ngoài vùng substrate"
       ],
       "answer": 0
     },
@@ -343,10 +343,10 @@
       "lesson": 3,
       "text": "Return path (đường dòng hồi) quan trọng khi đường tín hiệu chuyển lớp vì sao?",
       "options": [
-        "Tránh tăng diện tích vòng dòng và nhiễu điện cảm",
-        "Giúp loại bỏ mọi điện trở của trace",
-        "Thay thế hoàn toàn các plane cấp nguồn",
-        "Giúp bề mặt đồng không cần phủ bảo vệ"
+        "Giảm vòng dòng và nhiễu cảm ứng ký sinh",
+        "Xóa toàn bộ điện trở trên đường tín hiệu",
+        "Thay mọi plane dùng để phân phối nguồn",
+        "Bỏ mọi lớp bảo vệ trên bề mặt đường đồng"
       ],
       "answer": 0
     },
@@ -355,10 +355,10 @@
       "lesson": 3,
       "text": "Hai substrate có tỷ lệ đồng tổng bằng nhau vẫn có warpage khác nhau vì sao?",
       "options": [
-        "Phân bố đồng theo lớp làm thay đổi mô men uốn",
-        "Phần trăm đồng luôn quyết định duy nhất độ cong",
-        "Mọi lớp đồng đều nằm trên trục trung hòa",
-        "Độ cứng không phụ thuộc vị trí và chiều dày"
+        "Đồng phân bố khác lớp làm đổi mô men uốn",
+        "Tổng lượng đồng quyết định toàn bộ độ cong",
+        "Đồng ở mọi lớp đều thuộc trục trung hòa",
+        "Vị trí các lớp đồng không đổi độ cứng uốn"
       ],
       "answer": 0
     },
@@ -367,10 +367,10 @@
       "lesson": 3,
       "text": "Khi giảm via pitch, điều kiện hình học nào dễ bị siết chặt?",
       "options": [
-        "Không gian cho pad và các đường routing thoát ra",
-        "Khoảng cách giữa die và nắp tản nhiệt",
-        "Số lượng transistor trong vùng logic",
-        "Dung lượng bộ nhớ lưu trên một core die"
+        "Khe trống để đặt pad và escape routing",
+        "Khoảng cách giữa die và phần tản nhiệt",
+        "Khoảng cách các transistor bên trong die",
+        "Dung lượng bộ nhớ DRAM của hệ HBM stack"
       ],
       "answer": 0
     },
@@ -379,10 +379,10 @@
       "lesson": 4,
       "text": "Underfill (keo điền đầy dưới die) giúp mối nối flip-chip bằng cách nào?",
       "options": [
-        "Phân bố tải cơ học giữa die và substrate",
-        "Thay mọi bump bằng đường dẫn polymer",
-        "Loại hoàn toàn chênh lệch giãn nở nhiệt",
-        "Làm mất mọi ứng suất dư sau gia nhiệt"
+        "Truyền tải cơ học từ bump sang lớp keo",
+        "Thay bump bằng lớp nhựa dẫn điện nối",
+        "Làm mọi vật liệu có giãn nở bằng nhau",
+        "Xóa toàn bộ ứng suất còn lại sau cure"
       ],
       "answer": 0
     },
@@ -391,10 +391,10 @@
       "lesson": 4,
       "text": "CTE (hệ số giãn nở nhiệt) khác nhau giữa die và substrate gây nguy cơ gì?",
       "options": [
-        "Chuyển vị tương đối và tải trượt tại bump",
-        "Thay đổi mã lệnh chạy trong transistor",
-        "Tăng trực tiếp số ô nhớ của chip",
-        "Làm mọi lớp vật liệu co giãn như nhau"
+        "Tạo chuyển vị khác nhau và tải tại bump",
+        "Làm thay đổi tập lệnh logic của transistor",
+        "Làm tăng trực tiếp dung lượng nhớ của die",
+        "Khiến mọi lớp vật liệu giãn nở như nhau"
       ],
       "answer": 0
     },
@@ -403,10 +403,10 @@
       "lesson": 4,
       "text": "DNP (khoảng cách tới điểm trung hòa) lớn hơn thường ảnh hưởng thế nào đến chuyển vị nhiệt của bump?",
       "options": [
-        "Chuyển vị tương đối có xu hướng lớn hơn",
-        "Chuyển vị tương đối luôn bằng không",
-        "Chuyển vị nhỏ hơn trong mọi vật liệu",
-        "Không liên quan tới vị trí của bump"
+        "Chuyển vị tương đối tại bump tăng lên",
+        "Chuyển vị tương đối tại bump bằng không",
+        "Chuyển vị tương đối tại bump giảm xuống",
+        "Chuyển vị không phụ thuộc vị trí bump"
       ],
       "answer": 0
     },
@@ -415,10 +415,10 @@
       "lesson": 4,
       "text": "Tăng silica filler (hạt độn silica) trong underfill thường dẫn tới đánh đổi gì?",
       "options": [
-        "CTE giảm nhưng độ nhớt trước cure có thể tăng",
-        "CTE tăng còn độ nhớt chắc chắn giảm",
-        "CTE không đổi và keo luôn chảy nhanh hơn",
-        "CTE bằng không ở mọi mức hạt độn"
+        "CTE có thể giảm, độ nhớt có thể tăng",
+        "CTE có thể tăng, độ nhớt luôn giảm",
+        "CTE giữ nguyên, keo luôn chảy nhanh",
+        "CTE về không, keo giữ nguyên độ nhớt"
       ],
       "answer": 0
     },
@@ -427,10 +427,10 @@
       "lesson": 4,
       "text": "Trong mô hình Washburn lý tưởng, chiều dài keo điền đầy L tăng theo thời gian t gần dạng nào?",
       "options": [
-        "Tỷ lệ với căn bậc hai của thời gian",
-        "Tỷ lệ với bình phương của thời gian",
-        "Luôn giảm tuyến tính khi thời gian tăng",
-        "Không đổi dù thời gian tăng kéo dài"
+        "Chiều dài tăng theo căn bậc hai của t",
+        "Chiều dài tăng theo lũy thừa bậc hai t",
+        "Chiều dài giảm tuyến tính theo thời gian",
+        "Chiều dài giữ nguyên dù thời gian tăng"
       ],
       "answer": 0
     },
@@ -439,10 +439,10 @@
       "lesson": 4,
       "text": "Dispense pattern (cách bơm keo) cần tránh khép kín dòng chảy sớm nhằm ngăn điều gì?",
       "options": [
-        "Bẫy khí tạo void (lỗ rỗng) dưới die",
-        "Tạo lớp phủ đồng trên bề mặt die",
-        "Tăng số lượng kết nối UBM trong package",
-        "Giảm tổng số transistor của chip"
+        "Ngăn khí mắc kẹt thành void dưới vùng die",
+        "Ngăn keo điền đầy bị đông cứng sau cure",
+        "Ngăn lớp bump bị nóng chảy khi bơm keo",
+        "Ngăn độ nhớt của keo giảm khi gia nhiệt"
       ],
       "answer": 0
     },
@@ -451,10 +451,10 @@
       "lesson": 4,
       "text": "Coplanarity (độ đồng phẳng) bump kém ảnh hưởng đến underfill thế nào?",
       "options": [
-        "Khe hẹp cục bộ làm mặt sóng keo không đều",
-        "Giúp mọi khe giữa die và đế đồng nhất",
-        "Loại bỏ hoàn toàn sức cản dòng chảy",
-        "Không tác động đến khả năng giữ khí"
+        "Khe cục bộ hẹp làm thay đổi mặt sóng keo",
+        "Mọi khe giữa die và đế rộng bằng nhau",
+        "Toàn bộ keo không chịu lực cản mao dẫn",
+        "Không thể còn khí bị giữ ở bên trong khe"
       ],
       "answer": 0
     },
@@ -463,10 +463,10 @@
       "lesson": 4,
       "text": "Cure (đóng rắn) underfill có thể tạo ứng suất dư do nguyên nhân nào?",
       "options": [
-        "Co ngót polymer và sai khác giãn nở khi nguội",
-        "Dòng điện DC đổi chiều trong mọi bump",
-        "Mọi vật liệu có CTE giống hệt nhau",
-        "Độ dài trace trên substrate bị tăng lên"
+        "Co ngót keo và chênh CTE khi nguội",
+        "Dòng điện DC đảo chiều ở mọi bump",
+        "Mọi lớp có cùng hệ số giãn nở nhiệt",
+        "Đường tín hiệu kéo dài do tải nhiệt"
       ],
       "answer": 0
     },
@@ -475,10 +475,10 @@
       "lesson": 4,
       "text": "C-SAM (quét siêu âm) có thể hỗ trợ kiểm tra dạng lỗi nào trong package?",
       "options": [
-        "Void và delamination (tách lớp giao diện)",
-        "Lỗi chương trình logic trong CPU",
-        "Giá trị bit bị đảo trong bộ nhớ DRAM",
-        "Tần số hoạt động của đồng hồ hệ thống"
+        "Lỗ rỗng hoặc tách lớp trong các giao diện",
+        "Vết nứt do mỏi ở sâu trong lõi silicon",
+        "Biến dạng điện trở từng transistor đơn",
+        "Sai dữ liệu đọc từ bộ nhớ DRAM trên die"
       ],
       "answer": 0
     },
@@ -487,10 +487,10 @@
       "lesson": 4,
       "text": "CMP (đánh bóng cơ–hóa) trong hybrid bonding khác quy trình capillary underfill ở đâu?",
       "options": [
-        "Chuẩn bị bề mặt rất phẳng trước bonding",
-        "Là bước bơm underfill mặc định sau hàn",
-        "Thay thế toàn bộ phép đo độ đồng phẳng",
-        "Là bước bắt buộc sau mọi lần dispense"
+        "CMP chuẩn bị mặt phẳng cho hybrid bond",
+        "CMP là công đoạn bơm keo dưới flip-chip",
+        "CMP trực tiếp đo độ nhớt của underfill",
+        "CMP thay toàn bộ bước đóng rắn của keo"
       ],
       "answer": 0
     },
@@ -499,10 +499,10 @@
       "lesson": 5,
       "text": "Warpage (cong vênh package) biểu thị hiện tượng nào?",
       "options": [
-        "Hình dạng package bị lệch so với mặt phẳng chuẩn",
-        "Tín hiệu logic bị trễ khi qua cổng xử lý",
-        "Vật liệu hàn nối nhầm hai bump cạnh nhau",
-        "Một ô nhớ không giữ được dữ liệu điện"
+        "Cụm chip cong lệch khỏi mặt chuẩn đo",
+        "Dạng sóng bị suy hao khi truyền qua die",
+        "Nồng độ pha tạp trong silicon thay đổi",
+        "Solder nối nhầm hai pad nằm cạnh nhau"
       ],
       "answer": 0
     },
@@ -511,10 +511,10 @@
       "lesson": 5,
       "text": "CTE mismatch (chênh hệ số giãn nở nhiệt) có đủ quyết định chiều cong package không?",
       "options": [
-        "Không, còn phụ thuộc cấu trúc lớp và ràng buộc",
-        "Có, luôn làm package cong theo một chiều",
-        "Có, chỉ cần giá trị CTE của silicon",
-        "Không, vì CTE không liên quan biến dạng"
+        "Mức giãn nở tương đối khi đổi nhiệt",
+        "Mức điện trở khi dòng điện đổi chiều",
+        "Mức suy hao tín hiệu theo tần số cao",
+        "Mức phản ứng đóng rắn của keo theo giờ"
       ],
       "answer": 0
     },
@@ -523,10 +523,10 @@
       "lesson": 5,
       "text": "Hot warpage (cong vênh khi nóng) có thể khác lúc nhiệt độ phòng vì sao?",
       "options": [
-        "Tính chất và ứng suất các lớp thay đổi theo nhiệt",
-        "Package không còn chịu lực ở nhiệt độ cao",
-        "Mọi lớp vật liệu đều giãn nở như nhau",
-        "Chỉ phụ thuộc màu hiển thị của máy đo"
+        "Chưa; phải xét stack, độ cứng và gá đỡ",
+        "Có; chỉ cần biết CTE của lớp silicon",
+        "Có; lớp có CTE cao luôn tạo mặt lõm",
+        "Chưa; chỉ cần xem màu của substrate"
       ],
       "answer": 0
     },
@@ -535,10 +535,10 @@
       "lesson": 5,
       "text": "Khi so sánh hai warpage map (bản đồ cong vênh), cần thống nhất nhóm điều kiện nào?",
       "options": [
-        "Nhiệt độ, mặt chuẩn, vùng đo và cách gá mẫu",
-        "Tên tệp, màu hiển thị và thời gian chụp",
-        "Chỉ số lượng hình ảnh được lưu trên máy",
-        "Chỉ mã công ty sản xuất lớp vật liệu"
+        "Vật liệu và ứng suất đổi theo nhiệt độ",
+        "Mọi lớp vật liệu có độ cứng như nhau",
+        "Package chỉ cong sau khi đã nguội hẳn",
+        "Độ cong không đổi qua chu trình nhiệt"
       ],
       "answer": 0
     },
@@ -547,10 +547,10 @@
       "lesson": 5,
       "text": "Khi nào nên tính tính chất underfill trong mô hình cơ học của quy trình?",
       "options": [
-        "Sau khi underfill thực sự có mặt trong cấu trúc",
-        "Trước khi die và substrate được chế tạo",
-        "Ngay từ khi chưa có công đoạn gắn die",
-        "Chỉ sau khi thiết bị bị khách hàng trả về"
+        "Mốc chuẩn, nhiệt độ, gá đỡ, vùng quét",
+        "Màu hiển thị, độ sáng, tên người đo",
+        "Tên tệp đo, số ảnh và ngày lập báo cáo",
+        "Mã máy, tốc độ quạt và bộ nhớ lưu số"
       ],
       "answer": 0
     },
@@ -559,10 +559,10 @@
       "lesson": 5,
       "text": "Residual stress (ứng suất dư) có thể sinh ra bởi quá trình nào?",
       "options": [
-        "Cure, co ngót và làm nguội các lớp đã liên kết",
-        "Chỉ do đặt tên file đo warpage",
-        "Chỉ do ghi kết quả điện vào Excel",
-        "Chỉ do mở phần mềm mô phỏng hình học"
+        "Chỉ từ lúc underfill đã có trong cấu trúc",
+        "Ngay từ trước khi bơm keo vào vùng die",
+        "Trước khi chế tạo xong substrate hữu cơ",
+        "Chỉ sau nhiều năm package được sử dụng"
       ],
       "answer": 0
     },
@@ -571,10 +571,10 @@
       "lesson": 5,
       "text": "Local warpage (cong vênh cục bộ) tập trung đo ở phạm vi nào?",
       "options": [
-        "Vùng nhỏ quanh die, góc hoặc cụm bump",
-        "Toàn bộ dây chuyền sản xuất wafer",
-        "Chỉ vỏ máy tính phía ngoài chip",
-        "Chỉ lưu lượng khí trong phòng sạch"
+        "Do cure, co ngót rồi làm nguội các lớp",
+        "Do ảnh hiển thị cong trên màn hình đo",
+        "Do kiểm tra điện ở nhiệt độ bình thường",
+        "Do giảm độ phân giải của ảnh quét mẫu"
       ],
       "answer": 0
     },
@@ -583,10 +583,10 @@
       "lesson": 5,
       "text": "Nếu die được làm mỏng, có thể kết luận độ cong package luôn tăng không?",
       "options": [
-        "Không, cần xét toàn stack vật liệu và điều kiện tải",
-        "Có, die mỏng chắc chắn làm cong nhiều hơn",
-        "Có, vì silicon luôn mất hoàn toàn độ cứng",
-        "Không, vì độ dày không ảnh hưởng cơ học"
+        "Xét độ cong vùng nhỏ quanh die và bump",
+        "Chỉ xét độ cong toàn bộ panel sản xuất",
+        "Chỉ đo dòng của toàn mạng điện cấp nguồn",
+        "Chỉ kiểm tra hình dạng lớp vỏ máy tính"
       ],
       "answer": 0
     },
@@ -595,10 +595,10 @@
       "lesson": 5,
       "text": "Một bản đồ warpage duy nhất đủ xác nhận nguyên nhân gốc không?",
       "options": [
-        "Chưa, cần đối chứng, lịch sử và phép đo thêm",
-        "Có, điểm cong nhất luôn là nguyên nhân",
-        "Có, bất kỳ độ cong nào cũng do core",
-        "Chưa, vì warpage map không chứa dữ liệu hình học"
+        "Không; còn tùy độ cứng và cấu trúc stack",
+        "Có; die mỏng luôn khiến package cong hơn",
+        "Có; độ dày quyết định hệ số CTE của die",
+        "Không; độ dày không tác động độ cứng uốn"
       ],
       "answer": 0
     },
@@ -607,10 +607,10 @@
       "lesson": 5,
       "text": "Để đánh giá nguy cơ bump open khi reflow, cần đo yếu tố nào?",
       "options": [
-        "Biến dạng ở nhiệt độ liên kết và khả năng tiếp xúc",
-        "Chỉ cong vênh sau khi mẫu nguội hoàn toàn",
-        "Chỉ diện tích nhãn dán trên package",
-        "Chỉ khối lượng vật liệu của vỏ nhựa"
+        "Chưa; cần đối chứng và dữ liệu lịch sử",
+        "Có; cực trị trên map là nguyên nhân gốc",
+        "Có; mọi độ cong đều do một lớp duy nhất",
+        "Chưa; vì map không thể biểu diễn độ cong"
       ],
       "answer": 0
     },
@@ -619,10 +619,10 @@
       "lesson": 6,
       "text": "Return path (đường hồi dòng) của đường tín hiệu có vai trò gì?",
       "options": [
-        "Khép kín vòng dòng điện từ nguồn về",
-        "Thay thế bộ phận tản nhiệt của die",
-        "Làm mất toàn bộ điện dung đường truyền",
-        "Đưa nhiệt độ package về nhiệt độ phòng"
+        "Dòng quay về nguồn để khép kín vòng điện",
+        "Đường dẫn nhiệt từ die ra ngoài package",
+        "Dây cấp áp nhưng không tạo dòng hồi về",
+        "Đường dữ liệu không có plane tham chiếu"
       ],
       "answer": 0
     },
@@ -631,10 +631,10 @@
       "lesson": 6,
       "text": "Trace (đường tín hiệu) đi qua khe reference plane (mặt phẳng tham chiếu) gây nguy cơ nào?",
       "options": [
-        "Đường hồi vòng xa làm tăng điện cảm và nhiễu",
-        "Vòng dòng thu nhỏ nên không còn nhiễu",
-        "Dòng tín hiệu không còn chịu điện trở dây",
-        "Mọi phản xạ tại đầu thu được loại bỏ"
+        "Vòng dòng lớn lên, điện cảm có thể tăng",
+        "Vòng dòng nhỏ lại, điện cảm về bằng không",
+        "Đường hồi vẫn ngắn dù có khe cắt plane",
+        "Dòng hồi biến mất nên không tạo từ trường"
       ],
       "answer": 0
     },
@@ -643,10 +643,10 @@
       "lesson": 6,
       "text": "IR drop (sụt áp do điện trở) trong mạng cấp nguồn được hiểu là gì?",
       "options": [
-        "Điện áp giảm do dòng qua điện trở của đường cấp",
-        "Điện áp tăng vì tụ điện được nạp thêm",
-        "Điện áp thay đổi chỉ vì độ cong package",
-        "Điện áp mất do quạt tản nhiệt hoạt động"
+        "Điện áp sụt bằng tích dòng và điện trở",
+        "Điện áp sụt bằng thương dòng và điện trở",
+        "Điện áp sụt bằng thương điện trở và dòng",
+        "Điện áp sụt bằng tổng dòng và điện trở"
       ],
       "answer": 0
     },
@@ -655,10 +655,10 @@
       "lesson": 6,
       "text": "SI (Signal Integrity, toàn vẹn tín hiệu) chủ yếu đánh giá điều gì?",
       "options": [
-        "Dạng sóng và thời điểm tín hiệu đến đầu thu",
-        "Độ co ngót của keo khi được đóng rắn",
-        "Độ phẳng của bề mặt sau đánh bóng",
-        "Tổng chi phí một sản phẩm đạt kiểm tra"
+        "Dạng sóng tín hiệu đến đầu thu đạt yêu cầu",
+        "Nhiệt độ chip luôn ở mức phòng đo ổn định",
+        "Chi phí vật liệu package ở mức cho phép",
+        "Cong vênh của đế gần bằng không sau cure"
       ],
       "answer": 0
     },
@@ -667,10 +667,10 @@
       "lesson": 6,
       "text": "PI (Power Integrity, toàn vẹn nguồn) chủ yếu đánh giá điều gì?",
       "options": [
-        "Sụt áp và nhiễu trên mạng cấp nguồn chip",
-        "Độ bóng của lớp chống oxy hóa",
-        "Độ dày vật liệu hàn trên bump",
-        "Khả năng bám của lớp keo underfill"
+        "Sụt áp và nhiễu trên đường cấp nguồn",
+        "Độ bóng bề mặt silicon khi đánh bóng",
+        "Sai khác chiều cao bump sau reflow",
+        "Vết nứt bên trong lớp keo underfill"
       ],
       "answer": 0
     },
@@ -679,10 +679,10 @@
       "lesson": 6,
       "text": "Hotspot (điểm nóng) bên trong die là vùng có đặc điểm nào?",
       "options": [
-        "Nhiệt độ cục bộ cao hơn vùng xung quanh",
-        "Mật độ chân tín hiệu thấp nhất trong chip",
-        "Chỉ chứa các ô nhớ không hoạt động",
-        "Luôn nằm chính giữa nắp package"
+        "Vùng nhiệt độ cao hơn khu vực lân cận",
+        "Vùng có mật độ chân kết nối nhiều nhất",
+        "Vùng có ít transistor nhất trên die",
+        "Vùng có mức điện áp logic thấp nhất"
       ],
       "answer": 0
     },
@@ -691,10 +691,10 @@
       "lesson": 6,
       "text": "Giảm thermal resistance (điện trở nhiệt) của đường thoát nhiệt có lợi ích nào?",
       "options": [
-        "Giảm chênh nhiệt với cùng mức công suất truyền",
-        "Tăng ngay dung lượng lưu trữ của bộ nhớ",
-        "Làm mọi đường tín hiệu không còn độ trễ",
-        "Xóa hoàn toàn ứng suất cơ học của package"
+        "Giảm điện trở nhiệt của toàn đường truyền",
+        "Tăng điện trở nhiệt giữa die và tản nhiệt",
+        "Giảm diện tích tiếp xúc của die với nắp",
+        "Tăng lớp cách nhiệt nằm ở phía ngoài die"
       ],
       "answer": 0
     },
@@ -703,10 +703,10 @@
       "lesson": 6,
       "text": "Wire bond và bump có điện cảm khác nhau; cần so sánh ở phạm vi nào?",
       "options": [
-        "Toàn vòng tín hiệu và đường hồi, không chỉ dây dẫn",
-        "Chỉ chiều cao của phần vỏ nhựa",
-        "Chỉ giá thành của máy gắn die",
-        "Chỉ màu sắc của kim loại nối"
+        "Dòng hồi đi vòng, tăng nhiễu điện cảm",
+        "Dòng hồi đi tắt qua vùng không có đồng",
+        "Điện dung ký sinh tự biến mất hoàn toàn",
+        "Khe luôn khử nhiễu từ đường tín hiệu"
       ],
       "answer": 0
     },
@@ -715,10 +715,10 @@
       "lesson": 6,
       "text": "Propagation delay (trễ lan truyền) của trace khác trễ cổng logic ở điểm nào?",
       "options": [
-        "Một do đường truyền, một do phần tử logic chuyển trạng thái",
-        "Cả hai chỉ do quá trình đóng rắn nhựa",
-        "Cả hai chỉ do cong vênh package",
-        "Một do tản nhiệt, một do trọng lượng die"
+        "Một loại do đường truyền, một do cổng logic",
+        "Hai loại đều do quá trình đóng rắn polymer",
+        "Hai loại đều phản ánh độ cong của package",
+        "Một loại do tải nhiệt, một do mỏi của đế"
       ],
       "answer": 0
     },
@@ -727,10 +727,10 @@
       "lesson": 6,
       "text": "Crosstalk (xuyên nhiễu giữa đường tín hiệu) có thể sinh ra bởi các cơ chế nào?",
       "options": [
-        "Ghép điện dung và ghép điện cảm giữa các đường",
-        "Chỉ do co ngót của underfill đã cure",
-        "Chỉ do kích thước vùng transistor",
-        "Chỉ do mức độ sạch của mặt silicon"
+        "Hình học toàn vòng dòng kể cả đường hồi",
+        "Chỉ chiều dài trace mà không xét đường hồi",
+        "Chỉ khối lượng package, bỏ qua đường điện",
+        "Chỉ số bump, không xét đường nguồn và hồi"
       ],
       "answer": 0
     },
@@ -739,10 +739,10 @@
       "lesson": 7,
       "text": "Yield (tỷ lệ sản phẩm đạt) cần được xác định trên cơ sở nào?",
       "options": [
-        "Tử số, mẫu số, đơn vị và tiêu chí đạt rõ ràng",
-        "Chỉ giá bán của package ra thị trường",
-        "Chỉ số lượng máy đo trong dây chuyền",
-        "Chỉ nhiệt độ lưu kho của vật liệu"
+        "Số đơn vị đo, mẫu số và tiêu chí đạt",
+        "Màu của nhãn và tên nhà cung cấp die",
+        "Chỉ số thiết bị đang chạy trong nhà máy",
+        "Giá bán mà bỏ qua số lượng sản phẩm đạt"
       ],
       "answer": 0
     },
@@ -751,10 +751,10 @@
       "lesson": 7,
       "text": "FPY (First-Pass Yield, tỷ lệ đạt ngay lần đầu) tính sản phẩm nào vào tử số?",
       "options": [
-        "Sản phẩm đạt ở lần kiểm tra đầu mà không sửa",
-        "Mọi sản phẩm đã được sửa và đo lại",
-        "Tất cả đầu vào dù chưa được kiểm tra",
-        "Chỉ sản phẩm bị loại cuối dây chuyền"
+        "Đạt ngay lần đầu, chưa cần sửa sản phẩm",
+        "Đạt sau khi sửa và thử lại nhiều lần",
+        "Chưa được kiểm tra nhưng đã xuất xưởng",
+        "Bị loại bỏ ngay tại phép thử đầu tiên"
       ],
       "answer": 0
     },
@@ -763,10 +763,10 @@
       "lesson": 7,
       "text": "RTY (Rolled Throughput Yield, tỷ lệ đạt xuyên suốt) mô tả điều gì?",
       "options": [
-        "Tỷ lệ đi qua toàn chuỗi mà không cần sửa",
-        "Tỷ lệ chỉ đạt ở lần thử lại cuối cùng",
-        "Tỷ lệ sản phẩm nhập kho trước thử nghiệm",
-        "Tỷ lệ giữa giá bán và chi phí vật liệu"
+        "Đi qua toàn chuỗi công đoạn không cần sửa",
+        "Chỉ đạt ở lần thử lại sau công đoạn cuối",
+        "Được đưa vào kho nguyên liệu trước sản xuất",
+        "Đạt tỷ lệ giá bán so với chi phí vật liệu"
       ],
       "answer": 0
     },
@@ -775,10 +775,10 @@
       "lesson": 7,
       "text": "Khi các yield có điều kiện thuộc cùng luồng, yield toàn chuỗi được xác định thế nào?",
       "options": [
-        "Nhân tỷ lệ đạt của các công đoạn liên tiếp",
-        "Cộng mọi tỷ lệ công đoạn lại với nhau",
-        "Lấy tỷ lệ lớn nhất làm giá trị cuối",
-        "Chỉ dùng tỷ lệ công đoạn đầu tiên"
+        "Nhân yield có điều kiện của các công đoạn",
+        "Cộng yield có điều kiện của các công đoạn",
+        "Chọn yield lớn nhất trong các công đoạn",
+        "Lấy yield ban đầu thay cho yield cả chuỗi"
       ],
       "answer": 0
     },
@@ -787,10 +787,10 @@
       "lesson": 7,
       "text": "KGD (Known Good Die, die đã được kiểm tra đạt) có vai trò nào khi tích hợp chiplet?",
       "options": [
-        "Giảm nguy cơ ghép phải die đã biết có lỗi",
-        "Bảo đảm không thể có lỗi giao diện ghép",
-        "Thay toàn bộ phép thử package sau lắp ráp",
-        "Bảo đảm die không bao giờ hỏng sau nhiệt"
+        "Giảm nguy cơ tích hợp die đã có lỗi sẵn",
+        "Bảo đảm loại mọi lỗi phát sinh khi lắp ráp",
+        "Thay toàn bộ phép thử sau khi tích hợp die",
+        "Bảo đảm die không hỏng dưới mọi tải nhiệt"
       ],
       "answer": 0
     },
@@ -799,10 +799,10 @@
       "lesson": 7,
       "text": "Vì sao không được nhân tùy ý yield của nhà cung cấp với yield assembly?",
       "options": [
-        "Mẫu số và trạng thái đầu vào có thể khác nhau",
-        "Mọi yield ở các nhà cung cấp đều giống nhau",
-        "Yield không liên quan đến số đầu vào thực",
-        "Assembly luôn độc lập với mọi sàng lọc trước"
+        "Mẫu số và trạng thái đầu vào không trùng",
+        "Mọi yield của nhà cung cấp luôn như nhau",
+        "Yield không liên quan số sản phẩm được đo",
+        "Assembly luôn độc lập với sàng lọc đầu vào"
       ],
       "answer": 0
     },
@@ -811,10 +811,10 @@
       "lesson": 7,
       "text": "Pitch của bump thu nhỏ có tự chứng minh yield chắc chắn giảm không?",
       "options": [
-        "Không, còn phụ thuộc thiết kế và cửa sổ quy trình",
-        "Có, pitch nhỏ luôn tạo cầu hàn không tránh được",
-        "Có, vì mọi bump đều bị nứt trong reflow",
-        "Không, vì pitch không ảnh hưởng đến khả năng lỗi"
+        "Không; còn phụ thuộc thiết kế và quy trình",
+        "Có; pitch nhỏ chắc chắn gây lỗi cầu hàn",
+        "Có; pitch nhỏ làm mọi bump nứt khi reflow",
+        "Không; pitch không ảnh hưởng rủi ro nối"
       ],
       "answer": 0
     },
@@ -823,10 +823,10 @@
       "lesson": 7,
       "text": "Rework (sửa lỗi) khác retest (thử lại) ở điểm nào?",
       "options": [
-        "Rework có can thiệp sửa, retest có thể chỉ đo lại",
-        "Rework chỉ đo lại mà không tác động sản phẩm",
-        "Retest bắt buộc sửa kết cấu vật lý của die",
-        "Hai khái niệm luôn được xem là tương đương"
+        "Rework can thiệp sửa; retest chỉ đo lại",
+        "Rework chỉ đo lại; retest luôn sửa vật lý",
+        "Retest luôn thay mới cả phần die bị lỗi",
+        "Hai thuật ngữ luôn mang cùng một nghĩa"
       ],
       "answer": 0
     },
@@ -835,10 +835,10 @@
       "lesson": 7,
       "text": "Cost per good unit (chi phí trên sản phẩm đạt) nên tính thế nào?",
       "options": [
-        "Tổng chi phí phù hợp chia số package đạt tiêu chí",
-        "Tổng chi phí chia số sản phẩm bị loại bỏ",
-        "Giá bán nhân tổng số lần thử lại của lô",
-        "Chi phí kiểm tra chia số lần đổi công nghệ"
+        "Tổng chi phí chia số package đạt chuẩn",
+        "Tổng chi phí chia số package lỗi bỏ đi",
+        "Giá bán nhân số lần thử lại trong lô",
+        "Chi phí test chia số lần đổi công nghệ"
       ],
       "answer": 0
     },
@@ -847,10 +847,10 @@
       "lesson": 7,
       "text": "Vì sao qua final electrical test chưa đủ chứng minh độ tin cậy dài hạn?",
       "options": [
-        "Một số lỗi chỉ phát triển trong điều kiện tải sử dụng",
-        "Thử điện luôn phản ánh đầy đủ tuổi thọ vật liệu",
-        "Đạt điện đồng nghĩa không tồn tại hư hỏng tiềm ẩn",
-        "Không cần thử nhiệt và cơ sau khi đã đạt điện"
+        "Có lỗi chỉ phát triển dưới tải sử dụng",
+        "Phép thử điện dự đoán trọn tuổi thọ",
+        "Đạt điện nghĩa là không có lỗi tiềm ẩn",
+        "Đạt điện nên không cần thử cơ nhiệt"
       ],
       "answer": 0
     },
@@ -859,10 +859,10 @@
       "lesson": 8,
       "text": "RCA (Root Cause Analysis, phân tích nguyên nhân gốc) đặt mục tiêu nào?",
       "options": [
-        "Xác minh nguyên nhân hình thành lỗi bằng bằng chứng",
-        "Chỉ mô tả hình ảnh lỗi mà không thử nghiệm",
-        "Chọn nguyên nhân theo trực giác của kỹ sư",
-        "Thay thế mọi phép kiểm tra chất lượng"
+        "Xác minh nguyên nhân qua các bằng chứng đo",
+        "Chỉ mô tả triệu chứng, không có đối chứng",
+        "Quy lỗi theo kinh nghiệm, không cần dữ liệu",
+        "Thay hoàn toàn các phép kiểm tra chất lượng"
       ],
       "answer": 0
     },
@@ -871,10 +871,10 @@
       "lesson": 8,
       "text": "Quan sát void (lỗ rỗng) gần vùng nứt có đủ kết luận void gây nứt không?",
       "options": [
-        "Chưa, cần kiểm chứng cơ chế và mẫu đối chứng",
-        "Có, vì hai lỗi xuất hiện cạnh nhau",
-        "Có, ảnh quan sát là bằng chứng nhân quả",
-        "Chưa, vì void không thể được chụp bằng C-SAM"
+        "Chưa; cần chứng minh cơ chế và đối chứng",
+        "Có; hai dấu hỏng xuất hiện gần nhau là đủ",
+        "Có; ảnh chụp cho thấy quan hệ nhân quả",
+        "Chưa; vì C-SAM không nhận diện được void"
       ],
       "answer": 0
     },
@@ -883,10 +883,10 @@
       "lesson": 8,
       "text": "Occurrence cause (nguyên nhân hình thành lỗi) giải thích điều gì?",
       "options": [
-        "Vì sao khuyết tật được tạo ra hoặc phát triển",
-        "Vì sao phép kiểm tra đã bỏ sót khuyết tật",
-        "Vì sao báo cáo kỹ thuật được gửi chậm",
-        "Vì sao khách hàng thay đổi lịch đặt hàng"
+        "Vì sao lỗi được hình thành hoặc phát triển",
+        "Vì sao bộ kiểm tra không phát hiện được lỗi",
+        "Vì sao báo cáo được gửi chậm cho khách hàng",
+        "Vì sao lịch đặt hàng thay đổi vào cuối kỳ"
       ],
       "answer": 0
     },
@@ -895,10 +895,10 @@
       "lesson": 8,
       "text": "Escape cause (nguyên nhân lọt lỗi) giải thích điều gì?",
       "options": [
-        "Vì sao hệ thống phát hiện hoặc ngăn lỗi không hiệu quả",
-        "Vì sao vật liệu xảy ra hiện tượng khuếch tán",
-        "Vì sao vết nứt hình thành ở mối hàn",
-        "Vì sao underfill co ngót khi đóng rắn"
+        "Vì sao lỗi không bị kiểm tra phát hiện",
+        "Vì sao vật liệu khuếch tán qua giao diện",
+        "Vì sao vết nứt hình thành trong mối hàn",
+        "Vì sao keo bị co ngót khi được đóng rắn"
       ],
       "answer": 0
     },
@@ -907,10 +907,10 @@
       "lesson": 8,
       "text": "Is/Is Not (ma trận có lỗi/không lỗi) giúp việc điều tra như thế nào?",
       "options": [
-        "Khoanh vùng điều kiện và nhóm có hoặc chưa ghi nhận lỗi",
-        "Tự động xác nhận nguyên nhân dù chưa có dữ liệu",
-        "Thay toàn bộ việc lấy mẫu bằng một sơ đồ",
-        "Chỉ dùng để tính thời lượng của phép thử"
+        "Giới hạn điều kiện và nhóm có hoặc chưa lỗi",
+        "Xác nhận nguyên nhân dù chưa kiểm tra dữ liệu",
+        "Thay mọi bước lấy mẫu bằng sơ đồ trực quan",
+        "Chỉ tính thời gian cần thử nghiệm của một lô"
       ],
       "answer": 0
     },
@@ -919,10 +919,10 @@
       "lesson": 8,
       "text": "Fishbone (sơ đồ xương cá) trong RCA có chức năng chính nào?",
       "options": [
-        "Tổ chức những nhóm giả thuyết cần kiểm tra",
-        "Chứng minh luôn giả thuyết đúng nhất",
-        "Đo trực tiếp độ dài vết nứt trong die",
-        "Thay thế mọi phép thử trên mẫu đối chứng"
+        "Tổ chức các nhóm giả thuyết để kiểm chứng",
+        "Chứng minh được giả thuyết có vẻ đúng nhất",
+        "Đo trực tiếp vết nứt bằng sơ đồ nguyên nhân",
+        "Thay hoàn toàn thử nghiệm trên mẫu đối chứng"
       ],
       "answer": 0
     },
@@ -931,10 +931,10 @@
       "lesson": 8,
       "text": "Tương quan giữa warpage và bridging có chứng minh warpage gây bridging không?",
       "options": [
-        "Không, cần loại trừ yếu tố khác và thử kiểm chứng",
-        "Có, vì hai đại lượng luôn đi cùng nhau",
-        "Có, chỉ cần một ảnh sau gia nhiệt",
-        "Không, vì warpage không thể liên quan bridging"
+        "Không; còn phải loại trừ yếu tố gây nhiễu",
+        "Có; hai đại lượng đồng thời tăng là đủ",
+        "Có; chỉ cần một ảnh sau công đoạn reflow",
+        "Không; hai hiện tượng không thể liên quan"
       ],
       "answer": 0
     },
@@ -943,10 +943,10 @@
       "lesson": 8,
       "text": "DOE (Design of Experiments, thiết kế thí nghiệm) hỗ trợ RCA thế nào?",
       "options": [
-        "Thay đổi yếu tố có kiểm soát để phân biệt giả thuyết",
-        "Thay tất cả thông số cùng lúc không cần đối chứng",
-        "Chỉ xem ảnh mà không cần thiết lập mức thử",
-        "Dùng một lần đo để kết luận mọi điều kiện"
+        "Thử các yếu tố có kiểm soát và đối chứng",
+        "Đổi mọi thông số cùng lúc, bỏ đối chứng",
+        "Chỉ xem ảnh, không cần chọn các mức thử",
+        "Đo một mẫu rồi suy ra kết quả mọi cấu trúc"
       ],
       "answer": 0
     },
@@ -955,10 +955,10 @@
       "lesson": 8,
       "text": "Problem statement (mô tả sự cố) cần có thông tin cốt lõi nào?",
       "options": [
-        "Lỗi gì, ở đâu, khi nào, mức độ và phạm vi",
-        "Chỉ tên công nhân đang vận hành thiết bị",
-        "Chỉ tên phương pháp sửa dự kiến",
-        "Chỉ ngày lập bản báo cáo tổng hợp"
+        "Lỗi, vị trí, thời điểm, mức độ và phạm vi",
+        "Tên người vận hành cùng vị trí nhà máy",
+        "Chỉ tên biện pháp sửa đã chọn trước đó",
+        "Chỉ ngày viết báo cáo và người phê duyệt"
       ],
       "answer": 0
     },
@@ -967,10 +967,10 @@
       "lesson": 8,
       "text": "Một kết quả thử âm tính (không thấy khác biệt) có luôn bác bỏ giả thuyết không?",
       "options": [
-        "Không, phải xét độ nhạy phép thử và cỡ mẫu",
-        "Có, bất kỳ mẫu nào không lỗi đều bác bỏ",
-        "Có, kết quả âm tính luôn đủ cho nhân quả",
-        "Không, vì thử nghiệm không có vai trò trong RCA"
+        "Không; còn phải xét cỡ mẫu và độ nhạy",
+        "Có; chỉ một mẫu không lỗi là đủ bác bỏ",
+        "Có; kết quả âm tính luôn chứng minh sai",
+        "Không; thử nghiệm không dùng trong RCA"
       ],
       "answer": 0
     },
@@ -979,10 +979,10 @@
       "lesson": 9,
       "text": "TSV (Through-Silicon Via) là phần tử điện có đặc điểm nào?",
       "options": [
-        "Đường dẫn điện đi xuyên qua nền silicon",
-        "Trace chạy ngang trên lớp ABF của đế",
-        "Bump hàn nằm giữa hai bề mặt die",
-        "Lớp keo điền đầy giữa die và substrate"
+        "Đường dẫn điện chạy xuyên nền silicon",
+        "Đường đồng chạy ngang lớp điện môi ABF",
+        "Mối hàn nằm giữa hai bề mặt của die",
+        "Lớp keo nằm ở giữa die và substrate"
       ],
       "answer": 0
     },
@@ -991,10 +991,10 @@
       "lesson": 9,
       "text": "TSV khác kiến trúc package 2.5D ở điểm nào?",
       "options": [
-        "TSV là phần tử nối; 2.5D là cách bố trí nhiều die",
-        "TSV và 2.5D đều chỉ một loại keo",
-        "TSV là kiến trúc 3D không có liên kết",
-        "2.5D luôn có TSV trong mọi công nghệ"
+        "TSV là phần tử; 2.5D là kiến trúc ghép",
+        "TSV và 2.5D đều là các loại vật liệu keo",
+        "TSV chỉ là tên khác của chip đóng gói 3D",
+        "2.5D luôn bắt buộc có TSV trong mọi loại"
       ],
       "answer": 0
     },
@@ -1003,10 +1003,10 @@
       "lesson": 9,
       "text": "Trong đóng gói 3D, đặc điểm hình học chủ yếu là gì?",
       "options": [
-        "Các die xếp chồng theo phương đứng",
-        "Các die chỉ đặt cạnh nhau trên một đế",
-        "Mọi die tách nhau bằng bo mạch độc lập",
-        "Package không cần có bất kỳ kết nối điện"
+        "Các die được xếp chồng theo chiều đứng",
+        "Các die chỉ đặt cạnh nhau trên mặt đế",
+        "Mọi die đặt trên bo mạch hoàn toàn rời",
+        "Package không cần liên kết điện giữa die"
       ],
       "answer": 0
     },
@@ -1015,10 +1015,10 @@
       "lesson": 9,
       "text": "Dielectric liner (lớp lót điện môi) trong TSV Cu làm nhiệm vụ nào?",
       "options": [
-        "Cách điện lõi đồng với nền silicon",
-        "Thay lõi đồng bằng vật liệu polymer",
-        "Tạo dòng điện đi xuyên qua silicon không cách điện",
-        "Chỉ giữ lớp vỏ nhựa bên ngoài package"
+        "Cách điện giữa lõi đồng và nền silicon",
+        "Thay lõi dẫn đồng bằng vật liệu polymer",
+        "Cho dòng chạy qua Si không cách điện",
+        "Chỉ bảo vệ vỏ ngoài của package bán dẫn"
       ],
       "answer": 0
     },
@@ -1027,10 +1027,10 @@
       "lesson": 9,
       "text": "Barrier (lớp chắn) trong cấu trúc TSV đồng dùng để làm gì?",
       "options": [
-        "Hạn chế đồng khuếch tán vào các lớp khác",
-        "Tạo điện áp hoạt động cho bộ nhớ DRAM",
-        "Thay hoàn toàn lớp cách điện liner",
-        "Tăng kích thước vật lý của wafer"
+        "Hạn chế đồng khuếch tán vào vùng khác",
+        "Tạo điện áp nguồn trực tiếp cho DRAM",
+        "Thay toàn bộ lớp liner cách điện với Si",
+        "Làm cho tấm wafer có kích thước lớn hơn"
       ],
       "answer": 0
     },
@@ -1039,10 +1039,10 @@
       "lesson": 9,
       "text": "Seed layer (lớp mồi) trong quy trình TSV Cu hỗ trợ công đoạn nào?",
       "options": [
-        "Tạo lớp dẫn liên tục cho mạ điện đồng",
-        "Đóng rắn lớp polymer trước khi lắp ráp",
-        "Tạo chân BGA bên ngoài vỏ package",
-        "Thay thế bước kiểm tra độ sâu lỗ"
+        "Tạo đường dẫn điện ban đầu để mạ Cu",
+        "Đóng rắn lớp polymer trước khi gắn die",
+        "Tạo các chân hàn BGA ở mặt ngoài vỏ",
+        "Thay công đoạn đo hình học của lỗ TSV"
       ],
       "answer": 0
     },
@@ -1051,10 +1051,10 @@
       "lesson": 9,
       "text": "DRIE (khắc ion phản ứng sâu) có vai trò nào khi tạo TSV?",
       "options": [
-        "Khắc lỗ sâu trong nền silicon",
-        "Đổ đầy đồng bằng mạ điện hóa",
-        "Cắt rời die sau đóng gói",
-        "Gắn chân BGA bằng hàn reflow"
+        "Khắc các lỗ sâu vào bên trong silicon",
+        "Lấp đầy lỗ bằng đồng qua mạ điện hóa",
+        "Cắt rời các die sau khi đã đóng gói",
+        "Gắn các chân hàn BGA bằng nhiệt reflow"
       ],
       "answer": 0
     },
@@ -1063,10 +1063,10 @@
       "lesson": 9,
       "text": "CMP (đánh bóng cơ–hóa) trong TSV có mục tiêu chính nào?",
       "options": [
-        "Làm phẳng mặt và loại bỏ vật liệu dư sau mạ",
-        "Đo điện áp nhiễu của mạng nguồn",
-        "Làm tăng thời gian đóng rắn của underfill",
-        "Tạo liên kết điện giữa hai die bằng hàn"
+        "Làm phẳng và loại vật liệu dư sau mạ",
+        "Đo nhiễu điện áp của mạng cấp nguồn",
+        "Tăng thời gian đóng rắn keo underfill",
+        "Hàn nối trực tiếp hai die bằng solder"
       ],
       "answer": 0
     },
@@ -1075,10 +1075,10 @@
       "lesson": 9,
       "text": "Aspect ratio (tỷ số chiều sâu/đường kính) của TSV lớn thường đặt thách thức nào?",
       "options": [
-        "Khó phủ lớp và lấp đồng đều ở vùng sâu của lỗ",
-        "Không còn cần lớp chống khuếch tán",
-        "Mọi lỗ sẽ tự động có hình dạng tròn hoàn hảo",
-        "Tốc độ mạ luôn bằng nhau trên toàn chiều sâu"
+        "Khó phủ lớp đều và điền đồng đến đáy",
+        "Không cần lớp ngăn khuếch tán đồng",
+        "Lỗ luôn tròn hoàn hảo sau khi khắc",
+        "Mạ đồng luôn đều theo toàn chiều sâu"
       ],
       "answer": 0
     },
@@ -1087,10 +1087,10 @@
       "lesson": 9,
       "text": "Micro-bump khác TSV trong kết nối 3D ở chỗ nào?",
       "options": [
-        "Micro-bump nối giữa die; TSV dẫn xuyên silicon",
-        "Micro-bump luôn nằm trong lõi đồng của TSV",
-        "TSV chỉ là lớp keo còn micro-bump là via",
-        "Hai cấu trúc đều dùng để cách điện Cu khỏi Si"
+        "Micro-bump nối die; TSV xuyên silicon",
+        "Micro-bump nằm trong lõi đồng của TSV",
+        "TSV là keo còn micro-bump là lỗ dẫn",
+        "Cả hai chỉ dùng để cách điện silicon"
       ],
       "answer": 0
     },
@@ -1099,10 +1099,10 @@
       "lesson": 10,
       "text": "HBM (High Bandwidth Memory) được thiết kế nổi bật vì tính chất nào?",
       "options": [
-        "Băng thông dữ liệu cao nhờ kết nối rộng và die xếp chồng",
-        "Chỉ có một die DRAM với đường dữ liệu hẹp",
-        "Dùng bộ nhớ NAND để thay thế hoàn toàn DRAM",
-        "Không cần kết nối đến bộ xử lý của hệ thống"
+        "Bus rộng và die xếp chồng tăng băng thông",
+        "Chỉ một die với giao diện dữ liệu rất hẹp",
+        "Dùng NAND để thay thế toàn bộ bộ nhớ DRAM",
+        "Bỏ đường kết nối tới die xử lý trung tâm"
       ],
       "answer": 0
     },
@@ -1111,10 +1111,10 @@
       "lesson": 10,
       "text": "Core die trong stack HBM giữ vai trò gì?",
       "options": [
-        "Chứa các ô nhớ DRAM để lưu dữ liệu",
-        "Chứa toàn bộ mạch xử lý AI của máy chủ",
-        "Là đế hữu cơ ở bên ngoài package",
-        "Là nắp tản nhiệt che toàn bộ bộ nhớ"
+        "Chứa các ô nhớ DRAM dùng lưu dữ liệu",
+        "Chứa mạch xử lý AI thay cho compute die",
+        "Là lớp đế package đặt dưới bộ nhớ HBM",
+        "Là nắp tản nhiệt phủ lên stack bộ nhớ"
       ],
       "answer": 0
     },
@@ -1123,10 +1123,10 @@
       "lesson": 10,
       "text": "Base die ở đáy stack HBM chủ yếu hỗ trợ chức năng nào?",
       "options": [
-        "Giao diện và điều khiển bên trong chồng bộ nhớ",
-        "Trực tiếp thay thế tất cả compute die của hệ",
-        "Làm vỏ nhựa bao phủ bo mạch máy tính",
-        "Chỉ là chân hàn BGA ngoài package"
+        "Làm giao diện điều khiển trong stack HBM",
+        "Thay hoàn toàn compute die đặt cạnh HBM",
+        "Làm vỏ nhựa để bảo vệ bo mạch máy tính",
+        "Chỉ tạo các chân hàn BGA ở đáy package"
       ],
       "answer": 0
     },
@@ -1135,10 +1135,10 @@
       "lesson": 10,
       "text": "Compute die (die xử lý) trong hệ 2.5D có HBM thường bố trí thế nào?",
       "options": [
-        "Nằm cạnh stack bộ nhớ trên interposer hoặc substrate",
-        "Luôn là die DRAM ở tầng cao nhất",
-        "Nằm giữa mọi core die bên trong HBM",
-        "Chỉ gắn trực tiếp trên cánh quạt tản nhiệt"
+        "Nằm cạnh bộ nhớ trên lớp interposer",
+        "Nằm ở tầng cao nhất của chồng DRAM nhớ",
+        "Nằm giữa các core die trong stack HBM",
+        "Nằm trên cánh quạt tản nhiệt bên ngoài"
       ],
       "answer": 0
     },
@@ -1147,10 +1147,10 @@
       "lesson": 10,
       "text": "TSV trong stack HBM hỗ trợ đường kết nối nào?",
       "options": [
-        "Kết nối tín hiệu hoặc nguồn theo phương đứng qua silicon",
-        "Chỉ truyền dữ liệu ngang trên mặt lớp ABF",
-        "Thay toàn bộ liên kết die–die bằng vỏ nhựa",
-        "Chỉ đưa dữ liệu qua đường cáp quang ngoài máy"
+        "Nối tín hiệu và nguồn theo chiều dọc die",
+        "Chỉ dẫn dữ liệu ngang trên điện môi ABF",
+        "Thay mọi mối nối die bằng lớp vỏ nhựa",
+        "Chỉ dẫn dữ liệu trên cáp quang ngoài máy"
       ],
       "answer": 0
     },
@@ -1159,10 +1159,10 @@
       "lesson": 10,
       "text": "Băng thông bộ nhớ và dung lượng bộ nhớ khác nhau như thế nào?",
       "options": [
-        "Băng thông đo tốc độ GB/s, dung lượng đo GB",
-        "Băng thông đo GB, dung lượng đo GB/s",
-        "Cả hai đều đo bằng điện áp V",
-        "Cả hai đều đo bằng độ trễ ns"
+        "Băng thông đo GB/s; dung lượng đo GB",
+        "Băng thông đo GB; dung lượng đo GB/s",
+        "Hai đại lượng đều được đo bằng volt V",
+        "Hai đại lượng cùng được đo bằng ns"
       ],
       "answer": 0
     },
@@ -1171,10 +1171,10 @@
       "lesson": 10,
       "text": "Trong thiết kế HBM, băng thông lớn không tự chứng minh điều gì?",
       "options": [
-        "Độ trễ truy cập luôn thấp trong mọi điều kiện",
-        "Số bit có thể truyền mỗi giây rất lớn",
-        "Cần mạng đường dữ liệu rộng",
-        "Có nhiều cấp kết nối giữa chip và bộ nhớ"
+        "Không chứng minh độ trễ truy cập luôn thấp",
+        "Không chứng minh băng thông dữ liệu lớn",
+        "Không chứng minh giao diện dữ liệu rộng",
+        "Không chứng minh stack có đường liên kết"
       ],
       "answer": 0
     },
@@ -1183,10 +1183,10 @@
       "lesson": 10,
       "text": "Chiplet (die chức năng nhỏ dùng để tích hợp hệ) có ý nghĩa nào?",
       "options": [
-        "Ghép nhiều die chức năng để tạo một hệ package",
-        "Chỉ có một transistor trong toàn bộ chip",
-        "Loại bỏ kết nối điện giữa các khối xử lý",
-        "Thay bo mạch bằng một vật liệu keo"
+        "Ghép nhiều die chức năng trong một package",
+        "Chỉ dùng một transistor tạo cả bộ xử lý",
+        "Bỏ hoàn toàn kết nối giữa các die xử lý",
+        "Thay bo mạch bằng vật liệu keo cách điện"
       ],
       "answer": 0
     },
@@ -1195,10 +1195,10 @@
       "lesson": 10,
       "text": "Khi tích hợp nhiều chiplet, chỉ tiêu nào phản ánh hiệu quả kinh tế?",
       "options": [
-        "Yield tổ hợp và chi phí trên package đạt",
-        "Chỉ màu sắc và kích cỡ vỏ bảo vệ",
-        "Chỉ số lượng ảnh minh họa của công nghệ",
-        "Chỉ khối lượng tản nhiệt của máy chủ"
+        "Yield tổ hợp và chi phí mỗi package đạt",
+        "Chỉ màu sắc và kích thước vỏ package",
+        "Chỉ số hình minh họa của sản phẩm mới",
+        "Chỉ khối lượng của bộ phận tản nhiệt"
       ],
       "answer": 0
     },
@@ -1207,10 +1207,10 @@
       "lesson": 10,
       "text": "Vì sao cần phân biệt pilot/demo (thử nghiệm/trình diễn) với HVM (sản xuất hàng loạt)?",
       "options": [
-        "Tránh nhầm công nghệ đã trình diễn với năng lực sản xuất ổn định",
-        "Vì mọi mẫu thử đều có chất lượng thấp hơn sản xuất",
-        "Vì HVM chỉ có nghĩa kiểm tra một die đơn lẻ",
-        "Vì pilot và HVM luôn có cùng hiệu suất sản xuất"
+        "Tránh nhầm thử nghiệm với sản xuất ổn định",
+        "Vì mẫu thử luôn kém hơn sản xuất hàng loạt",
+        "Vì HVM chỉ kiểm tra một chip trong phòng lab",
+        "Vì pilot và HVM có cùng yield ở mọi quy mô"
       ],
       "answer": 0
     }

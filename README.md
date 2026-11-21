@@ -25,3 +25,11 @@
 - Từ ngân hàng 100 câu, các lượt **có thể trùng thứ tự ngẫu nhiên**, nên không cam kết khác tuyệt đối từng cặp sinh viên. Xác suất trùng toàn bộ rất nhỏ.
 - Để tránh tải máy chủ khi Render Free ngủ, hãy mở website trước giờ thi và thử tải thử để xác nhận khả năng kết nối.
 - `questions.json` chứa đáp án, chỉ có thể đọc từ mã nguồn Private trên GitHub và máy chủ; endpoint public không cấp file này. Tuy vậy người có quyền truy cập repository có thể xem đáp án.
+
+## Bộ câu hỏi hiệu chỉnh độ dài (21/11/2026)
+- Rà soát lại **100 câu hỏi nguồn** để mọi đề 30 câu rút ngẫu nhiên đều hưởng lợi.
+- Bốn lựa chọn trong mỗi câu có độ dài **chênh lệch tối đa 3 ký tự** (đo bằng Python `len`, bao gồm khoảng trắng). Không đệm ký tự vô nghĩa.
+- Chỉ 22/100 câu có đáp án đúng dài hơn rõ rệt cả ba lựa chọn còn lại, thay cho 83/100 câu có đáp án đúng dài nhất (kể cả trường hợp bằng nhau) trong bản gốc.
+- Bảo toàn đáp án đúng về kiến thức và khóa đáp án `answer`; máy chủ vẫn tráo vị trí A/B/C/D riêng từng lượt.
+- Vẫn là một bài thi liên tục 30 câu (rút 3 câu/bài), 45 giây/câu, lưu PostgreSQL nếu cấu hình `DATABASE_URL`, xuất Excel cho giảng viên và chỉ trả điểm cho sinh viên.
+- Lưu ý: giảng viên cần kiểm duyệt ngôn ngữ và đáp án trước buổi thi chính thức.
