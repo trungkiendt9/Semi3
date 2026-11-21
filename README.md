@@ -1,28 +1,27 @@
-# Website kiểm tra SIC – Lớp Semi3-3 (Render + GitHub)
+# SIC Semi3-3 — Một đề thi tổng hợp 30 câu
 
-**Không có thư mục con**: upload tất cả file (`server.js`, `app.js`, `index.html`, `style.css`, `questions.json`, `package.json`, `render.yaml`, `.gitignore`, `README.md`) vào thư mục gốc repository GitHub (Private).
+**Toàn bộ các file nằm cùng cấp**, không có thư mục con trong bản ZIP xuất bản. Giải nén rồi upload tất cả file lên gốc GitHub repository **Private**.
 
-## Chức năng
-- 10 bài, 100 câu; **45 giây cho từng câu**; hết giờ tự chuyển khi trang đang mở.
-- Mỗi phiên thi trộn ngẫu nhiên **thứ tự 10 câu** và **thứ tự 4 phương án trong từng câu** bằng bộ sinh ngẫu nhiên an toàn trên máy chủ.
-- Đáp án chỉ ở máy chủ; sinh viên **chỉ thấy điểm số**, không thấy đáp án.
-- Tự động lưu mỗi lượt hoàn thành. Giảng viên xem danh sách, tải **Excel (.xlsx)** hoặc CSV.
-- Server tự tạo/cập nhật file Excel sau mỗi lượt nộp, đặt tại `EXCEL_FILE` (mặc định cùng vị trí với `RESULTS_FILE`).
-- **PostgreSQL (`DATABASE_URL`) là nơi lưu điểm bền vững khuyến nghị**, vì ổ đĩa của Render Free là tạm thời. Mỗi lần giảng viên tải Excel, file được dựng lại từ cơ sở dữ liệu nên luôn bao gồm các kết quả đã lưu, kể cả sau khi Render restart.
-- Phiên thi cũng lưu trong PostgreSQL khi đã cấu hình, giúp tránh mất phiên nếu dịch vụ khởi động lại.
+## Đề thi
+- 1 đề gồm **30 câu liên tục**; rút ngẫu nhiên **3 câu cho mỗi bài** trong tổng 10 bài học từ ngân hàng 100 câu. Trộn ngẫu nhiên thứ tự 30 câu và thứ tự bốn phương án riêng cho mỗi lượt.
+- **45 giây/câu**, tối đa **22 phút 30 giây**. Hết giờ sẽ chuyển câu tiếp theo (cả lúc người dùng trở lại website sau khi đóng tab, máy chủ sẽ xử lý các mốc hết hạn).
+- Mỗi câu 1 điểm quy đổi: điểm hệ 10 = số đúng / 30 × 10. Không tiết lộ đáp án trong giao diện sinh viên hoặc API.
+- Sinh viên nhập **Họ tên**, lớp cố định **Semi3-3**. Sau khi hoàn thành chỉ thấy **điểm số**.
 
-## Triển khai
-1. Giải nén ZIP, upload **các file** (không upload ZIP) lên root GitHub repository Private.
-2. Trên Render, tạo Web Service từ repository trên: Runtime `Node`, Root Directory trống, Build `npm install`, Start `npm start`.
-3. Environment → thêm `ADMIN_KEY` với chuỗi bí mật **ít nhất 12 ký tự**.
-4. **Quan trọng**: tạo Render PostgreSQL hoặc DB PostgreSQL bên ngoài, lấy **internal database URL** (nếu cả hai trên Render cùng khu vực) và thêm biến môi trường `DATABASE_URL` vào Web Service. Không đưa URL/mật khẩu vào GitHub.
-5. Chọn Deploy; mở URL `https://<ten-dich-vu>.onrender.com`.
-6. Làm thử ít nhất hai phiên cùng một bài để quan sát câu và lựa chọn được trộn.
-7. Mở **Dành cho giảng viên**, nhập `ADMIN_KEY`, chọn **Xem kết quả**, rồi **Tải Excel (.xlsx)**.
+## Đăng GitHub và chạy Render Free
+1. Tạo repository GitHub **Private**, ví dụ `sic-semi3-3-final-30`.
+2. Giải nén ZIP, tải từng file trong thư mục giải nén lên gốc repository, không tải ZIP nguyên.
+3. Render → New → Web Service → Connect GitHub; Runtime Node, Root Directory trống, Build `npm install`, Start `npm start`.
+4. Render → Environment: `ADMIN_KEY` = mật khẩu riêng giảng viên, **ít nhất 12 ký tự**; `DATABASE_URL` = chuỗi kết nối **PostgreSQL Session Pooler** của Supabase (hoặc Render PostgreSQL). Hai biến này là độc lập, không dùng lại password của database cho `ADMIN_KEY`.
+5. Deploy rồi thử các lượt thi và xem **Dành cho giảng viên → Xem kết quả → Tải Excel (.xlsx)**.
 
-## Giới hạn và lưu ý
-- Nếu **không cấu hình `DATABASE_URL`**, ứng dụng vẫn chạy ở chế độ thử nghiệm: kết quả JSON + Excel nằm trên ổ đĩa container tạm thời và phiên thi ở RAM; **có thể mất toàn bộ khi Render restart/redeploy**. Không dùng chế độ này cho thi chính thức.
-- `EXCEL_FILE` có thể đặt thành `/var/data/bang-diem-SIC-Semi3-3.xlsx` **chỉ nếu Render service có Persistent Disk gắn tại `/var/data`**. Nếu không, file Excel được tạo tự động nhưng là bản tạm; bản ghi tin cậy nằm trong PostgreSQL.
-- Hệ thống hiện xác định sinh viên bằng **họ tên do người làm nhập**; chưa xác thực danh tính, chưa giới hạn số lần thi theo người và chưa chống gian lận bằng xác thực. Nên bổ sung mã sinh viên / xác thực trước kỳ thi chính thức.
-- Bộ nhớ máy chủ tự lưu mỗi câu đã trả lời; sau 45 giây, trình duyệt chủ động nộp câu. Nếu sinh viên đóng trình duyệt, phiên có thể bị treo đến khi tiếp tục; bài chưa nộp hết chưa có kết quả trong Excel.
-- `ADMIN_KEY` bắt buộc dài ít nhất 12 ký tự, không dùng lại mật khẩu cá nhân.
+## Dữ liệu và file Excel
+- **Kết quả và phiên thi tự động được ghi vào PostgreSQL**, không phụ thuộc ổ đĩa tạm trên Render Free; sau khi nộp xong được ghi chính xác một lần theo mã phiên.
+- File **Excel thật (.xlsx)** được tạo mới khi giảng viên bấm tải, từ toàn bộ dữ liệu đã lưu. File **không** tồn tại bền vững trên Render Free; PostgreSQL là nguồn dữ liệu chính. Không cần tự xuất thủ công sau mỗi lượt thi.
+- Nếu `DATABASE_URL` chưa cấu hình, website chỉ chạy **chế độ thử nghiệm** bằng file JSON và RAM, có thể mất dữ liệu khi máy chủ khởi động lại. Không dùng để thi chính thức.
+
+## Giới hạn
+- Hiện xác định sinh viên bằng họ tên do họ tự nhập; **chưa xác minh danh tính hoặc giới hạn một lượt thi cho mỗi sinh viên**. Cần bổ sung mã sinh viên/xác thực nếu thi tính điểm chính thức.
+- Từ ngân hàng 100 câu, các lượt **có thể trùng thứ tự ngẫu nhiên**, nên không cam kết khác tuyệt đối từng cặp sinh viên. Xác suất trùng toàn bộ rất nhỏ.
+- Để tránh tải máy chủ khi Render Free ngủ, hãy mở website trước giờ thi và thử tải thử để xác nhận khả năng kết nối.
+- `questions.json` chứa đáp án, chỉ có thể đọc từ mã nguồn Private trên GitHub và máy chủ; endpoint public không cấp file này. Tuy vậy người có quyền truy cập repository có thể xem đáp án.

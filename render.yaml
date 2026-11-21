@@ -1,9 +1,11 @@
 services:
   - type: web
-    name: sic-semi3-3-quiz
+    name: sic-semi3-3-final-30
     runtime: node
     buildCommand: npm install
     startCommand: npm start
     envVars:
       - key: ADMIN_KEY
+        sync: false
+      - key: DATABASE_URL
         sync: false

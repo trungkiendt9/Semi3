@@ -1,70 +1,60 @@
 'use strict';
-const http=require('http');
-const fs=require('fs');
-const path=require('path');
-const crypto=require('crypto');
-const ExcelJS=require('exceljs');
-const {Pool}=require('pg');
-const ROOT=__dirname;
-const PORT=Number(process.env.PORT||3000);
-const ADMIN_KEY=process.env.ADMIN_KEY||'';
-const DATABASE_URL=process.env.DATABASE_URL||'';
-const QUESTIONS=JSON.parse(fs.readFileSync(path.join(ROOT,'questions.json'),'utf8'));
-const RESULTS_FILE=process.env.RESULTS_FILE||path.join(ROOT,'results.json');
-const EXCEL_FILE=process.env.EXCEL_FILE||path.join(path.dirname(RESULTS_FILE),'bang-diem-SIC-Semi3-3.xlsx');
-const LIMIT=32768, DURATION_MS=45000;
-const pool=DATABASE_URL?new Pool({connectionString:DATABASE_URL,ssl:DATABASE_URL.includes('localhost')?false:{rejectUnauthorized:false},max:5}):null;
-const mem=new Map();
-const now=()=>Date.now();
-const resultDir=path.dirname(RESULTS_FILE);fs.mkdirSync(resultDir,{recursive:true});
-if(!pool&&!fs.existsSync(RESULTS_FILE))fs.writeFileSync(RESULTS_FILE,'[]');
-const rand=()=>crypto.randomInt(0,0x7fffffff);
-function shuffle(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=crypto.randomInt(i+1);[b[i],b[j]]=[b[j],b[i]];}return b;}
-function json(res,code,data){res.writeHead(code,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff','X-Frame-Options':'DENY'});res.end(JSON.stringify(data));}
-function body(req){return new Promise((resolve,reject)=>{let str='',size=0;req.on('data',b=>{size+=b.length;if(size>LIMIT){reject(Error('Dữ liệu quá lớn'));req.destroy();return;}str+=b.toString();});req.on('end',()=>{try{resolve(JSON.parse(str||'{}'));}catch{reject(Error('JSON không hợp lệ'));}});req.on('error',reject);});}
-function safeEq(a,b){const x=Buffer.from(String(a||'')),y=Buffer.from(String(b||''));return x.length===y.length&&crypto.timingSafeEqual(x,y)}
-function isAdmin(req){return ADMIN_KEY.length>=12&&safeEq(req.headers['x-admin-key'],ADMIN_KEY)}
-function plan(lesson){const ids=shuffle(QUESTIONS[lesson].questions.map(q=>q.id));const perms=Object.fromEntries(ids.map(id=>[id,shuffle([0,1,2,3])]));return {ids,perms};}
-function getQuestion(s){const id=s.plan.ids[s.index],q=QUESTIONS[s.lesson].questions.find(q=>q.id===id);if(!q)return null;return {id:q.id,text:q.text,options:s.plan.perms[q.id].map(i=>q.options[i]),number:s.index+1,total:s.plan.ids.length,seconds:DURATION_MS/1000,deadline:s.deadline};}
-function resultRecord(s){const total=s.plan.ids.length;return {id:s.id,name:s.name,className:'Semi3-3',course:'Công nghệ bán dẫn tại SIC',lesson:s.lesson,lessonTitle:QUESTIONS[s.lesson].title,correct:s.correct,total,score10:Math.round(s.correct/total*100)/10,startedAt:new Date(s.created).toISOString(),finishedAt:new Date().toISOString()};}
-function scoreResponse(r){return {finished:true,score:r.score10,lessonTitle:r.lessonTitle};}
-async function listResults(){if(pool){const r=await pool.query('SELECT payload FROM quiz_results ORDER BY finished_at DESC');return r.rows.map(x=>x.payload)}return JSON.parse(fs.readFileSync(RESULTS_FILE,'utf8')).sort((a,b)=>b.finishedAt.localeCompare(a.finishedAt));}
-async function storeFileOnly(r){const a=await listResults();if(a.some(x=>x.id===r.id))return; a.push(r);const tmp=RESULTS_FILE+'.tmp';fs.writeFileSync(tmp,JSON.stringify(a,null,2));fs.renameSync(tmp,RESULTS_FILE);}
-async function makeWorkbook(rows){const wb=new ExcelJS.Workbook();wb.creator='SIC Semi3-3';wb.created=new Date();const sh=wb.addWorksheet('Bang diem',{views:[{state:'frozen',ySplit:3}],properties:{defaultRowHeight:23}});
- sh.mergeCells('A1:J1');sh.getCell('A1').value='SIC | KẾT QUẢ KIỂM TRA CÔNG NGHỆ BÁN DẪN – SEMI3-3';sh.getCell('A1').font={name:'Arial',size:15,bold:true,color:{argb:'FFFFFFFF'}};sh.getCell('A1').fill={type:'pattern',pattern:'solid',fgColor:{argb:'FF12345C'}};sh.getRow(1).height=32;
- sh.mergeCells('A2:J2');sh.getCell('A2').value='Tổng số lượt hoàn thành: '+rows.length+' | Xuất lúc: '+new Date().toLocaleString('vi-VN',{timeZone:'Asia/Ho_Chi_Minh'});sh.getCell('A2').font={italic:true,color:{argb:'FF4D6075'}};
- const headers=['STT','Thời gian nộp (VN)','Họ và tên','Lớp','Khóa học','Bài','Tên bài kiểm tra','Số câu đúng','Tổng câu','Điểm / 10'];sh.getRow(3).values=headers;const widths=[8,24,30,14,31,9,53,15,13,16];widths.forEach((w,i)=>sh.getColumn(i+1).width=w);
- const head=sh.getRow(3);head.height=28;head.eachCell(c=>{c.font={bold:true,color:{argb:'FFFFFFFF'}};c.fill={type:'pattern',pattern:'solid',fgColor:{argb:'FF205C94'}};c.alignment={vertical:'middle',wrapText:true}});
- rows.forEach((r,i)=>{const date=new Date(r.finishedAt);const dateVN=isNaN(date.getTime())?r.finishedAt:date.toLocaleString('vi-VN',{timeZone:'Asia/Ho_Chi_Minh'});const values=[i+1,dateVN,r.name,r.className,r.course,Number(r.lesson),r.lessonTitle,r.correct,r.total,r.score10];const line=sh.addRow(values);line.height=23;line.eachCell(c=>{c.alignment={vertical:'middle'};if(i%2===0)c.fill={type:'pattern',pattern:'solid',fgColor:{argb:'FFF1F6FC'}}});line.getCell(10).numFmt='0.0';});
- sh.autoFilter={from:'A3',to:'J'+Math.max(3,rows.length+3)};return wb;}
-let excelWrite=Promise.resolve();
-function refreshExcel(){excelWrite=excelWrite.catch(()=>{}).then(async()=>{const data=await listResults();const wb=await makeWorkbook(data);const tmp=EXCEL_FILE+'.tmp.xlsx';fs.mkdirSync(path.dirname(EXCEL_FILE),{recursive:true});await wb.xlsx.writeFile(tmp);fs.renameSync(tmp,EXCEL_FILE);});return excelWrite;}
-async function init(){if(pool){await pool.query(`CREATE TABLE IF NOT EXISTS quiz_sessions (id TEXT PRIMARY KEY, payload JSONB NOT NULL, updated_at TIMESTAMPTZ DEFAULT NOW()); CREATE TABLE IF NOT EXISTS quiz_results (id TEXT PRIMARY KEY, payload JSONB NOT NULL, finished_at TIMESTAMPTZ NOT NULL);`);console.log('PostgreSQL đã kết nối. Kết quả và phiên thi được lưu bền vững.');}else console.warn('CHẾ ĐỘ THỬ NGHIỆM: chưa có DATABASE_URL. Dữ liệu trên Render Free có thể bị mất khi khởi động lại!');}
-async function saveSession(s){if(pool){await pool.query('INSERT INTO quiz_sessions(id,payload) VALUES($1,$2::jsonb)',[s.id,JSON.stringify(s)]);}else mem.set(s.id,s);}
-async function retrieveSession(token){if(pool){const r=await pool.query('SELECT payload FROM quiz_sessions WHERE id=$1',[token]);return r.rows[0]?.payload||null;}return mem.get(token);}
-async function completeSession(s){const r=resultRecord(s);if(pool){const client=await pool.connect();try{await client.query('BEGIN');await client.query('INSERT INTO quiz_results (id,payload,finished_at) VALUES ($1,$2::jsonb,$3) ON CONFLICT (id) DO NOTHING',[r.id,JSON.stringify(r),r.finishedAt]);await client.query('UPDATE quiz_sessions SET payload=$2::jsonb,updated_at=NOW() WHERE id=$1',[s.id,JSON.stringify({...s,finished:true,result:r})]);await client.query('COMMIT');}catch(e){await client.query('ROLLBACK');throw e}finally{client.release();}}else{await storeFileOnly(r);mem.set(s.id,{...s,finished:true,result:r});}
- try{await refreshExcel();}catch(e){console.error('Không ghi được Excel (điểm vẫn được lưu trong DB hoặc JSON):',e.message);}return scoreResponse(r);}
-async function answerSession(token,questionId,answer){const client=pool?await pool.connect():null;let s;
- try{if(client){await client.query('BEGIN');const rs=await client.query('SELECT payload FROM quiz_sessions WHERE id=$1 FOR UPDATE',[token]);s=rs.rows[0]?.payload;}else s=mem.get(token);
- if(!s){if(client)await client.query('ROLLBACK');return {code:404,data:{error:'Phiên thi không tồn tại hoặc đã hết hạn.'}};}
- if(s.finished){if(client)await client.query('ROLLBACK');return {code:200,data:scoreResponse(s.result)};}
- const id=s.plan.ids[s.index],q=QUESTIONS[s.lesson].questions.find(x=>x.id===id);
- if(id!==questionId){if(client)await client.query('ROLLBACK');return {code:409,data:{error:'Câu hỏi không khớp. Vui lòng tải lại trạng thái.'}};}
- if(Date.now()<=s.deadline+250 && Number.isInteger(answer)&&answer>=0&&answer<4 && s.plan.perms[q.id][answer]===q.answer)s.correct++;
- s.index++;if(s.index>=s.plan.ids.length){const r=resultRecord(s);s.finished=true;s.result=r;if(client){await client.query('INSERT INTO quiz_results (id,payload,finished_at) VALUES ($1,$2::jsonb,$3) ON CONFLICT (id) DO NOTHING',[r.id,JSON.stringify(r),r.finishedAt]);await client.query('UPDATE quiz_sessions SET payload=$2::jsonb,updated_at=NOW() WHERE id=$1',[s.id,JSON.stringify(s)]);await client.query('COMMIT');}else{await storeFileOnly(r);mem.set(s.id,s);}
- try{await refreshExcel();}catch(e){console.error('Excel write failed:',e.message);}return {code:200,data:scoreResponse(r)};}
- s.deadline=Date.now()+DURATION_MS;if(client){await client.query('UPDATE quiz_sessions SET payload=$2::jsonb,updated_at=NOW() WHERE id=$1',[s.id,JSON.stringify(s)]);await client.query('COMMIT');}else mem.set(s.id,s);
- return {code:200,data:{finished:false,question:getQuestion(s)}};
- }catch(e){if(client)try{await client.query('ROLLBACK')}catch{}throw e}finally{if(client)client.release();}}
-const mime={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'application/javascript; charset=utf-8'};
+const http=require('http'),fs=require('fs'),path=require('path'),crypto=require('crypto');
+const {Pool}=require('pg');const ExcelJS=require('exceljs');
+const ROOT=__dirname,PORT=Number(process.env.PORT||3000),ADMIN_KEY=process.env.ADMIN_KEY||'',DB_URL=process.env.DATABASE_URL||'';
+const BANK=JSON.parse(fs.readFileSync(path.join(ROOT,'questions.json'),'utf8'));
+const DURATION=45000,NUM=30;const pool=DB_URL?new Pool({connectionString:DB_URL,max:4,connectionTimeoutMillis:12000}):null;
+const cache=new Map();const RESULT_PATH=process.env.RESULTS_FILE||path.join(ROOT,'results.json');
+if(!pool&&!fs.existsSync(RESULT_PATH))fs.writeFileSync(RESULT_PATH,'[]');
+const secureShuffle=a=>{const b=[...a];for(let i=b.length-1;i>0;i--){const j=crypto.randomInt(i+1);[b[i],b[j]]=[b[j],b[i]];}return b;};
+const byId=Object.fromEntries(BANK.questions.map(q=>[q.id,q]));
+const equal=(a,b)=>{const x=Buffer.from(String(a||'')),y=Buffer.from(String(b||''));return x.length===y.length&&crypto.timingSafeEqual(x,y)};
+const admin=req=>ADMIN_KEY.length>=12&&equal(req.headers['x-admin-key'],ADMIN_KEY);
+const send=(res,status,p)=>{res.writeHead(status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});res.end(JSON.stringify(p));};
+const parse=req=>new Promise((resolve,reject)=>{let n=0,parts=[];req.on('data',b=>{n+=b.length;if(n>20000){reject(Error('Quá giới hạn'));req.destroy();return}parts.push(b)});req.on('end',()=>{try{resolve(JSON.parse(Buffer.concat(parts).toString('utf8')||'{}'))}catch{reject(Error('JSON không hợp lệ'))}});req.on('error',reject)});
+function buildAttempt(name){const selection=[];for(let lesson=1;lesson<=10;lesson++){let group=BANK.questions.filter(q=>q.lesson===lesson);if(group.length<3)throw Error('Thiếu câu hỏi của bài '+lesson);selection.push(...secureShuffle(group).slice(0,3));}
+ const order=secureShuffle(selection).map(q=>({id:q.id,perm:secureShuffle([0,1,2,3])}));return {id:crypto.randomBytes(24).toString('hex'),name,created:Date.now(),index:0,correct:0,deadline:Date.now()+DURATION,order,finished:false,result:null};}
+function current(s){const item=s.order[s.index];if(!item)return null;const q=byId[item.id];return {id:q.id,text:q.text,options:item.perm.map(j=>q.options[j]),number:s.index+1,total:NUM,deadline:s.deadline,seconds:45};}
+function result(s){return {id:s.id,name:s.name,className:BANK.className,course:BANK.title,correct:s.correct,total:NUM,score10:Math.round(s.correct*100/NUM)/10,startedAt:new Date(s.created).toISOString(),finishedAt:new Date().toISOString()};}
+function publicResult(s){return {finished:true,score:s.result.score10,correct:s.result.correct,total:s.result.total};}
+async function initialize(){if(pool){await pool.query('CREATE TABLE IF NOT EXISTS sic30_attempts(id TEXT PRIMARY KEY,payload JSONB NOT NULL,updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW())');await pool.query('CREATE TABLE IF NOT EXISTS sic30_results(id TEXT PRIMARY KEY,payload JSONB NOT NULL,finished_at TIMESTAMPTZ NOT NULL)');console.log('PostgreSQL: connected')}else console.warn('WARNING: DATABASE_URL missing. Demo mode; results and sessions NOT durable on Render Free.');}
+async function newAttempt(s){if(pool)await pool.query('INSERT INTO sic30_attempts (id,payload) VALUES ($1,$2::jsonb)',[s.id,JSON.stringify(s)]);else cache.set(s.id,s);}
+async function getAttempt(id){if(pool){const r=await pool.query('SELECT payload FROM sic30_attempts WHERE id=$1',[id]);return r.rows[0]?.payload||null;}return cache.get(id)||null;}
+function localResults(){return JSON.parse(fs.readFileSync(RESULT_PATH,'utf8'));}
+async function allResults(){if(pool){const r=await pool.query('SELECT payload FROM sic30_results ORDER BY finished_at DESC');return r.rows.map(x=>x.payload);}return localResults().sort((a,b)=>b.finishedAt.localeCompare(a.finishedAt));}
+function updateState(s,at){let changed=false;while(!s.finished&&at>=s.deadline){s.index++;changed=true;if(s.index===NUM){s.finished=true;s.result=result(s);break;}s.deadline+=DURATION;}return changed;}
+async function runTransaction(token,action){if(!pool){const s=cache.get(token);if(!s)return null;const resultBefore=s.finished;const out=action(s);if(s.finished&&!resultBefore){const r=localResults();if(!r.some(v=>v.id===s.id)){r.push(s.result);fs.writeFileSync(RESULT_PATH,JSON.stringify(r,null,2));}}cache.set(token,s);return out;}
+ const client=await pool.connect();try{await client.query('BEGIN');const rs=await client.query('SELECT payload FROM sic30_attempts WHERE id=$1 FOR UPDATE',[token]);if(!rs.rows.length){await client.query('ROLLBACK');return null;}
+ const s=rs.rows[0].payload,wasFinished=s.finished;const out=action(s);if(s.finished&&!wasFinished){await client.query('INSERT INTO sic30_results(id,payload,finished_at) VALUES($1,$2::jsonb,$3) ON CONFLICT (id) DO NOTHING',[s.id,JSON.stringify(s.result),s.result.finishedAt]);}
+ await client.query('UPDATE sic30_attempts SET payload=$2::jsonb,updated_at=NOW() WHERE id=$1',[token,JSON.stringify(s)]);await client.query('COMMIT');return out;
+ }catch(e){await client.query('ROLLBACK');throw e}finally{client.release()}}
+async function status(id){return runTransaction(id,s=>{updateState(s,Date.now());return s.finished?publicResult(s):{finished:false,question:current(s)};});}
+async function answer(input){const id=String(input.token||'');return runTransaction(id,s=>{
+ if(s.finished)return publicResult(s);
+ const at=Date.now();const wasExpired=updateState(s,at);if(s.finished)return publicResult(s);
+ const item=s.order[s.index];if(item.id!==input.questionId){return {finished:false,question:current(s),outdated:true};}
+ // A response received after deadline cannot receive credit, even when browser timer is slow.
+ if(at<=s.deadline+200&&Number.isInteger(input.answer)&&input.answer>=0&&input.answer<=3&&item.perm[input.answer]===byId[item.id].answer)s.correct++;
+ s.index++;if(s.index>=NUM){s.finished=true;s.result=result(s);return publicResult(s)};
+ s.deadline=at+DURATION;return {finished:false,question:current(s)};
+ });}
+async function excel(rows){const wb=new ExcelJS.Workbook();wb.creator='SIC – Semi3-3';const sh=wb.addWorksheet('Bang diem',{views:[{state:'frozen',ySplit:3}]});
+ sh.mergeCells('A1:I1');sh.getCell('A1').value='SIC • BẢNG ĐIỂM KIỂM TRA TỔNG HỢP 30 CÂU — SEMI3-3';sh.getCell('A1').font={size:15,bold:true,color:{argb:'FFFFFFFF'}};sh.getCell('A1').fill={type:'pattern',pattern:'solid',fgColor:{argb:'FF173B82'}};sh.getRow(1).height=33;
+ sh.mergeCells('A2:I2');sh.getCell('A2').value='Số lượt nộp: '+rows.length+' | Xuất báo cáo: '+new Date().toLocaleString('vi-VN',{timeZone:'Asia/Ho_Chi_Minh'});
+ const hdr=['STT','Thời gian nộp (VN)','Họ và tên','Lớp','Khóa học','Số câu đúng','Tổng câu','Điểm / 10','Mã lượt thi'];sh.getRow(3).values=hdr;
+ const widths=[8,24,29,13,48,16,14,16,52];widths.forEach((v,i)=>sh.getColumn(i+1).width=v);
+ sh.getRow(3).eachCell(c=>{c.fill={type:'pattern',pattern:'solid',fgColor:{argb:'FF205DB0'}};c.font={bold:true,color:{argb:'FFFFFFFF'}};c.alignment={vertical:'middle',wrapText:true}});sh.getRow(3).height=30;
+ rows.forEach((r,i)=>{const row=sh.addRow([i+1,new Date(r.finishedAt).toLocaleString('vi-VN',{timeZone:'Asia/Ho_Chi_Minh'}),r.name,r.className,r.course,r.correct,r.total,r.score10,r.id]);row.eachCell(c=>{if(i%2===0)c.fill={type:'pattern',pattern:'solid',fgColor:{argb:'FFEAF2FF'}}});row.getCell(8).numFmt='0.0'});
+ sh.autoFilter={from:'A3',to:'I'+Math.max(3,rows.length+3)};return wb.xlsx.writeBuffer();}
+const allow={'index.html':'text/html; charset=utf-8','style.css':'text/css; charset=utf-8','app.js':'application/javascript; charset=utf-8'};
 async function handler(req,res){try{const u=new URL(req.url,'http://localhost');if(u.pathname.startsWith('/api/')){
- if(req.method==='GET'&&u.pathname==='/api/lessons')return json(res,200,{course:'Công nghệ bán dẫn tại SIC',className:'Semi3-3',lessons:Object.entries(QUESTIONS).sort((a,b)=>+a[0]-+b[0]).map(([id,v])=>({id,title:v.title,ready:v.ready,count:v.questions.length}))});
- if(req.method==='POST'&&u.pathname==='/api/start'){const b=await body(req),name=String(b.name||'').trim().replace(/\s+/g,' '),lesson=String(b.lesson||'');if(name.length<3||name.length>100||!QUESTIONS[lesson]?.ready)return json(res,400,{error:'Vui lòng nhập họ tên hợp lệ và chọn bài có câu hỏi.'});const s={id:crypto.randomBytes(24).toString('hex'),name,lesson,plan:plan(lesson),index:0,correct:0,created:now(),deadline:now()+DURATION_MS,finished:false};await saveSession(s);return json(res,200,{token:s.id,question:getQuestion(s)});}
- if(req.method==='POST'&&u.pathname==='/api/answer'){const b=await body(req);const r=await answerSession(String(b.token||''),String(b.questionId||''),b.answer);return json(res,r.code,r.data);}
- if(req.method==='GET'&&u.pathname==='/api/status'){const s=await retrieveSession(String(u.searchParams.get('token')||''));if(!s)return json(res,404,{error:'Không tìm thấy phiên thi'});return json(res,200,s.finished?scoreResponse(s.result):{finished:false,question:getQuestion(s)});}
- if(req.method==='GET'&&u.pathname==='/api/admin/results'){if(!isAdmin(req))return json(res,403,{error:'Sai mã quản trị hoặc chưa cấu hình ADMIN_KEY (ít nhất 12 ký tự).'});return json(res,200,{results:await listResults()});}
- if(req.method==='GET'&&u.pathname==='/api/admin/excel'){if(!isAdmin(req))return json(res,403,{error:'Bạn không có quyền tải bảng điểm.'});await refreshExcel();res.writeHead(200,{'Content-Type':'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet','Content-Disposition':'attachment; filename="Bang-diem-SIC-Semi3-3.xlsx"','Cache-Control':'no-store'});return fs.createReadStream(EXCEL_FILE).pipe(res);}
- return json(res,404,{error:'Không tìm thấy API'});}
- if(req.method!=='GET')return json(res,405,{error:'Method not allowed'});const target=u.pathname==='/'?'index.html':u.pathname.slice(1);if(!['index.html','style.css','app.js'].includes(target))return json(res,404,{error:'Không tìm thấy'});res.writeHead(200,{'Content-Type':mime[path.extname(target)],'Cache-Control':'no-store','X-Content-Type-Options':'nosniff','X-Frame-Options':'DENY'});fs.createReadStream(path.join(ROOT,target)).pipe(res);
- }catch(e){console.error(e);if(!res.headersSent)json(res,500,{error:'Lỗi máy chủ; vui lòng thử lại hoặc liên hệ giảng viên.'});}}
-init().then(()=>http.createServer(handler).listen(PORT,()=>console.log('SIC Quiz running at port',PORT))).catch(e=>{console.error('Không thể khởi động DB:',e);process.exit(1)});
+ if(req.method==='GET'&&u.pathname==='/api/config')return send(res,200,{title:BANK.title,className:BANK.className,total:NUM,seconds:45,lessons:10});
+ if(req.method==='POST'&&u.pathname==='/api/start'){const b=await parse(req),name=String(b.name||'').trim().replace(/\s+/g,' ');if(name.length<3||name.length>100)return send(res,400,{error:'Họ và tên phải dài từ 3 đến 100 ký tự.'});const s=buildAttempt(name);await newAttempt(s);return send(res,200,{token:s.id,question:current(s)});}
+ if(req.method==='GET'&&u.pathname==='/api/status'){const state=await status(String(u.searchParams.get('token')||''));return state?send(res,200,state):send(res,404,{error:'Phiên thi không tồn tại.'});}
+ if(req.method==='POST'&&u.pathname==='/api/answer'){const state=await answer(await parse(req));return state?send(res,200,state):send(res,404,{error:'Phiên thi không tồn tại.'});}
+ if(req.method==='GET'&&u.pathname==='/api/admin/results'){if(!admin(req))return send(res,403,{error:'Mã quản trị chưa đúng hoặc ADMIN_KEY chưa cấu hình (từ 12 ký tự).'});return send(res,200,{results:await allResults()});}
+ if(req.method==='GET'&&u.pathname==='/api/admin/excel'){if(!admin(req))return send(res,403,{error:'Không có quyền tải Excel.'});const x=await excel(await allResults());res.writeHead(200,{'Content-Type':'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet','Content-Disposition':'attachment; filename="Bang-diem-SIC-Semi3-3-30-cau.xlsx"','Cache-Control':'no-store'});res.end(Buffer.from(x));return;}
+ return send(res,404,{error:'API không tồn tại.'});}
+ if(req.method!=='GET')return send(res,405,{error:'Method not allowed'});const file=u.pathname==='/'?'index.html':u.pathname.substring(1);if(!allow[file])return send(res,404,{error:'Không tìm thấy tệp.'});res.writeHead(200,{'Content-Type':allow[file],'Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});return fs.createReadStream(path.join(ROOT,file)).pipe(res);
+ }catch(e){console.error(e);if(!res.headersSent)send(res,500,{error:'Lỗi máy chủ. Vui lòng liên hệ giảng viên.'});}}
+initialize().then(()=>http.createServer(handler).listen(PORT,'0.0.0.0',()=>console.log('SIC 30 exam ready on port '+PORT))).catch(e=>{console.error('DB startup failure',e);process.exit(1)});

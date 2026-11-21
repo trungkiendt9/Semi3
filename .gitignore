@@ -1,6 +1,4 @@
 node_modules/
-results.json
-*.tmp
-*.tmp.xlsx
-*.xlsx
 .env
+results.json
+*.xlsx
